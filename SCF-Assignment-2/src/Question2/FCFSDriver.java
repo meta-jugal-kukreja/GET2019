@@ -1,9 +1,14 @@
-package Question2;
+package question2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This is the driver class which calls all the methods to perform all operations.
+ * @author Admin
+ * Dated 07/11/2019
+ */
 public class FCFSDriver {
 
 	public static void main(String[] args) {
@@ -19,7 +24,7 @@ public class FCFSDriver {
 		List<Integer> turnAroundTimeList = new ArrayList<>();
 		List<Integer> waitingTimeList = new ArrayList<>();
 
-		int NUMBER_OF_COLUMNS = 2;
+		final int NUMBER_OF_COLUMNS = 2;
 
 		int[][] processes = new int[numberOfProcess][NUMBER_OF_COLUMNS];
 

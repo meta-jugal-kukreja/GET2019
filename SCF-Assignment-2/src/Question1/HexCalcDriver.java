@@ -1,4 +1,4 @@
-package Question1;
+package question1;
 
 import java.util.Scanner;
 
@@ -11,6 +11,7 @@ public class HexCalcDriver {
 
 		Scanner inputScanner = new Scanner(System.in);
 		HexCalc hexCalcObject = new HexCalc();
+		int choice = 0;
 
 		System.out.println("What do you want to do? ");
 		System.out.println("1. Convert Hexadecimal number to Decimal number.");
@@ -23,24 +24,40 @@ public class HexCalcDriver {
 		boolean flag = true;
 		do {
 			System.out.print("\nEnter your Choice : ");
-			int choice = inputScanner.nextInt();
-			int decimalNumber;
+			try{
+			choice = inputScanner.nextInt();
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+				System.exit(0);
+			}
+			int decimalNumber = 0;
 			switch (choice) {
 			case 1:
-				System.out.print("\nEnter the Hexaecimal number : ");
+				System.out.print("\nEnter the Hexadecimal number : ");
 				String hexadecimalNumber = inputScanner.next();
-				decimalNumber = hexCalcObject
-						.convertHexadecimalNumberToDecimalNumber(hexadecimalNumber);
-				if (decimalNumber < 0) {
-					System.out.println("This is an invalid hexadecimal number");
-				} else {
+				if(hexCalcObject.hexadecimalNumberValidation(hexadecimalNumber))
+				{
+						System.out.println("This is an invalid hexadecimal number");
+				}
+				else
+				{
+					decimalNumber = hexCalcObject
+							.convertHexadecimalNumberToDecimalNumber(hexadecimalNumber);
 					System.out.println("Decimal Representation of "
 							+ hexadecimalNumber + " is : " + decimalNumber);
 				}
 				break;
 			case 2:
 				System.out.print("\nEnter the Decimal number : ");
+				try{
 				decimalNumber = inputScanner.nextInt();
+				}
+				catch (Exception e) {
+					System.out.println(e);
+					System.exit(0);
+				}
 				System.out
 						.println("Hexadecimal Representation of "
 								+ decimalNumber

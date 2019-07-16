@@ -1,20 +1,25 @@
-package Question2;
+package question2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class contains all the methods to perform all operations.
+ * @author Admin
+ * Dated 07/11/2019
+ */
 public class FCFS {
 	// Variables for accessing columns of the 2D array.
-	private int COLUMN_FIRST = 0;
-	private int COLUMN_SECOND = 1;
+	private static final int COLUMN_FIRST = 0;
+	private static final int COLUMN_SECOND = 1;
 
 	/**
 	 * This method computes Completion Time of each process
 	 * 
 	 * @param processes
 	 *            contains arrival and burst time of each process
-	 * @return List of Completion time of each process
+	 * @return {List}List of Completion time of each process
 	 */
 	public ArrayList<Integer> computeCompletionTime(int[][] processes) {
 		int i;
@@ -39,7 +44,7 @@ public class FCFS {
 	 * 
 	 * @param waitingTimeList
 	 *            contains waiting times of all processes
-	 * @return Maximum Waiting time
+	 * @return {int}Maximum Waiting time
 	 */
 	public int computeMaximumWaitingTime(List<Integer> waitingTimeList) {
 		int maxWaitingTime = waitingTimeList.get(0);
@@ -58,7 +63,7 @@ public class FCFS {
 	 *            contains arrival and burst time of each process
 	 * @param completionTimeList
 	 *            contains Completion times of all processes
-	 * @return List of Completion time of each process
+	 * @return {List}List of Completion time of each process
 	 */
 	public ArrayList<Integer> computeTurnAroundTime(int[][] processes,
 			List<Integer> completionTimeList) {
@@ -76,7 +81,7 @@ public class FCFS {
 	 * 
 	 * @param waitingTimeList
 	 *            contains waiting times of all processes
-	 * @return Average Waiting Time
+	 * @return {double}Average Waiting Time
 	 */
 	public double computeAverageWaitingTime(List<Integer> waitingTimeList) {
 		int totalWaitingTime = 0;
@@ -92,7 +97,7 @@ public class FCFS {
 	 *            contains arrival and burst time of each process
 	 * @param turnAroundTimeList
 	 *            contains Turn around times of all processes
-	 * @return List of Completion time of each process
+	 * @return {List}List of Completion time of each process
 	 */
 	public ArrayList<Integer> computeWaitingTime(int[][] processes,
 			List<Integer> turnAroundTimeList) {

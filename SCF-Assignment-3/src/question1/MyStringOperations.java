@@ -1,4 +1,4 @@
-package Question1;
+package question1;
 
 import java.util.Scanner;
 
@@ -32,12 +32,14 @@ public class MyStringOperations {
 	 */
 	public String stringReverse(String inputString) {
 
-		String reverseString = "";
-		for (int i = (inputString.length() - 1); i >= 0; i--) {
-			reverseString = reverseString + inputString.charAt(i);
+		char[] stringArray = inputString.toCharArray();
+		for (int i = 0, j = (inputString.length() - 1); i < stringArray.length/2; i++, j--) {
+			char swappingChar = stringArray[i];
+			stringArray[i] = stringArray[j];
+			stringArray[j] = swappingChar;
 		}
 
-		return reverseString;
+		return new String(stringArray);
 	}
 	
 	/**
@@ -45,7 +47,7 @@ public class MyStringOperations {
 	 * @return {String}The resultant string
 	 */
 	public String stringReverseCharacters(String inputString) {
-		String resultantString = "";
+		StringBuilder resultantString = new StringBuilder(inputString);
 		for (int i = 0; i < inputString.length(); i++) {
 			char tempChar = inputString.charAt(i);
 			if (tempChar != ' ') {
@@ -53,17 +55,17 @@ public class MyStringOperations {
 					int asciiValue = (int) tempChar;
 					asciiValue = asciiValue + 32;
 					tempChar = (char) asciiValue;
-					resultantString = resultantString + tempChar;
+					resultantString.setCharAt(i, tempChar);
 				} else {
 					int asciiValue = (int) tempChar;
 					asciiValue = asciiValue - 32;
 					tempChar = (char) asciiValue;
-					resultantString = resultantString + tempChar;
+					resultantString.setCharAt(i, tempChar);
 				}
 			} else
-				resultantString = resultantString + ' ';
+				resultantString.append(' ');
 		}
-		return resultantString;
+		return resultantString.toString();
 	}
 
 	/**

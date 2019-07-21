@@ -108,7 +108,6 @@ public class inSetTest {
 		{
 			int[] setArray = {};
 			setObject.setSetOfIntegers(setArray);
-			int[] expectedArray = {1,2,3};
 			assertEquals(false, setObject.getComplement());
 		}
 		@Test 

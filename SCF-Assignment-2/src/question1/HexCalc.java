@@ -17,6 +17,8 @@ public class HexCalc {
 	 * @return {int} decimal number
 	 */
 	public int convertHexadecimalNumberToDecimalNumber(String hexadecimalNumber) {
+		
+		assert hexadecimalNumberValidation(hexadecimalNumber) : "Invalid Hexadecimal Number";
 
 		hexadecimalNumber = hexadecimalNumber.toUpperCase();
 		int decimalNumber = 0;
@@ -223,11 +225,9 @@ public class HexCalc {
 		int decimalNumber1 = convertHexadecimalNumberToDecimalNumber(number1);
 		int decimalNumber2 = convertHexadecimalNumberToDecimalNumber(number2);
 		int quotient = decimalNumber1 / decimalNumber2;
-		int remainder = decimalNumber1 % decimalNumber2;
-		String resultantNumber = "Quotient = "
-				+ convertDecimalNumberToHexadecimalNumber(quotient)
-				+ "\nRemainder = "
-				+ convertDecimalNumberToHexadecimalNumber(remainder);
+		
+		String resultantNumber = convertDecimalNumberToHexadecimalNumber(quotient);
+
 		return resultantNumber;
 	}
 
@@ -242,6 +242,9 @@ public class HexCalc {
 	 */
 	public boolean checkEqualityOfTwoHexadecimalNumbers(String number1,
 			String number2) {
+		
+		assert (hexadecimalNumberValidation(number1) || hexadecimalNumberValidation(number2)) : "Invalid Hexadecimal Number";
+		
 		return number1.equals(number2);
 	}
 

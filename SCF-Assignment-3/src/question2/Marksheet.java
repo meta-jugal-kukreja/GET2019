@@ -21,7 +21,7 @@ public class Marksheet {
 		try{
 		 n = inputScanner.nextInt();
 		 if(n == 0)
-			 throw new ArithmeticException();   //if size of the array is 0 then there will be ArithematicException at average and percentage of students passed methods
+			 System.out.println("No of students can not be zero, please make your choice again");
 		}
 		catch(ArithmeticException e)
 		{

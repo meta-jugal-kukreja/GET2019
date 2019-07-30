@@ -5,7 +5,7 @@ package problem2;
  * @author Jugal
  * Dated 07/19/2019
  */
-public class Polynomial {
+public final class Polynomial {
 
 	private int[] polynomials;
 	private int polynomialDegree;

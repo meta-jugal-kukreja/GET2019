@@ -11,8 +11,10 @@ public class ArrOperations {
 	 * @return {int} length of the largest mirror section
 	 */
 	public int lengthOfLargestMirrorSection(int inputArray[]) {
-		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
-			throw new AssertionError("Array size can't be zero");
+//		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
+//			throw new AssertionError("Array size can't be zero");
+		
+		assert inputArray.length == 0 : "Array size can't be zero";
 		int i, j, k;
 		int lengthOfMirror = 0;
 		int lengthOfIntermediateMirror;
@@ -38,8 +40,10 @@ public class ArrOperations {
 	 * @return {int} number of clumps in the array
 	 */
 	public int calculateNumberOfClumps(int inputArray[]) {
-		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
-			throw new AssertionError("Array size can't be zero");
+//		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
+//			throw new AssertionError("Array size can't be zero");
+		
+		assert inputArray.length == 0 : "Array size can't be zero";
 		int i, j;
 		boolean checkingStatus;
 		int lengthOfInputArray = inputArray.length;
@@ -68,14 +72,20 @@ public class ArrOperations {
 	 * @return {int[]} rearranged array with the given conditions
 	 */
 	public int[] fixXYproblem(int inputArray[], int X, int Y) {
-		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
-			throw new AssertionError("Array size can't be zero"); 
-		if (countOccurencesOfX(inputArray, X) != countOccurencesOfY(inputArray,Y)) //Throwing Assertion Error if there are unequal occurrences of X and Y
-			throw new AssertionError("There are unequal occurences of X and Y");
-		if (checkAdjacencyOfX(inputArray, X)) //Throwing Assertion Error if two X's are adjacent
-			throw new AssertionError("Two X values are Adjacent");
-		if (inputArray[inputArray.length - 1] == X) //Throwing Assertion Error if X is the last element of the array
-			throw new AssertionError("X cannot be at last position of the array");
+//		if (inputArray.length == 0) //Throwing Assertion Error if array size is 0
+//			throw new AssertionError("Array size can't be zero"); 
+//		if (countOccurencesOfX(inputArray, X) != countOccurencesOfY(inputArray,Y)) //Throwing Assertion Error if there are unequal occurrences of X and Y
+//			throw new AssertionError("There are unequal occurrences of X and Y");
+//		if (checkAdjacencyOfX(inputArray, X)) //Throwing Assertion Error if two X's are adjacent
+//			throw new AssertionError("Two X values are Adjacent");
+//		if (inputArray[inputArray.length - 1] == X) //Throwing Assertion Error if X is the last element of the array
+//			throw new AssertionError("X cannot be at last position of the array");
+		
+		assert inputArray.length == 0 : "Array size can't be zero";
+		assert countOccurencesOfX(inputArray, X) != countOccurencesOfY(inputArray,Y) : "There are unequal occurrences of X and Y";
+		assert checkAdjacencyOfX(inputArray, X) : "Two X values are Adjacent";
+		assert inputArray[inputArray.length - 1] == X : "X cannot be at last position of the array";
+		
 		int[] outputArray = inputArray;
 		for (int i = 0; i < inputArray.length; i++) {
 			int indexOfX = searchInArray(outputArray, X, i); //Search index of X
@@ -102,8 +112,10 @@ public class ArrOperations {
 	 * @return {int} index of the array before which it can be splitted
 	 */
 	public int splitArray(int inputArray[]) {
-		if (inputArray.length == 0) //Throwing Assertion Error is array size is 0
-			throw new AssertionError("Array size can't be zero");
+//		if (inputArray.length == 0) //Throwing Assertion Error is array size is 0
+//			throw new AssertionError("Array size can't be zero");
+		
+		assert inputArray.length == 0 : "Array size can't be zero";
 		int lengthOfInputArray = inputArray.length;
 		int splitIndex = lengthOfInputArray / 2;
 		int terminationCount = 0;
@@ -115,7 +127,7 @@ public class ArrOperations {
 				break;
 			} else {
 				int sumFromStart = sumElementsFromStart(inputArray, splitIndex); //Calculating left side sum
-				int sumFromEnd = sumElementsFromEnd(inputArray, splitIndex); //Calculationg right side sum
+				int sumFromEnd = sumElementsFromEnd(inputArray, splitIndex); //Calculating right side sum
 				if (sumFromEnd > sumFromStart) {
 					splitIndex++;
 				} else if (sumFromStart > sumFromEnd)

@@ -43,7 +43,6 @@ public class SparseMatrixTest {
 		int matrix2[][] = { { 0, 1, 0 }, { 4, 0, 0 }, { 0, 0, 5 } };
 		int addResult[][] = { { 0, 5, 0 }, { 5, 0, 0 }, { 0, 0, 10 } };
 		SparseMatrix spareMatrix1 = new SparseMatrix(matrix1);
-		SparseMatrix spareMatrix2 = new SparseMatrix(matrix2);
 		assertArrayEquals(addResult, spareMatrix1.addTwoSparseMatrices(matrix2));
 	}
 	@Test
@@ -52,7 +51,6 @@ public class SparseMatrixTest {
 		int matrix2[][] = { { 0, 1, 0 }, { 4, 0, 8 }, { 0, 0, 5 } };
 		int addResult[][] = { { 0, 5, 0 }, { 5, 0, 8 }, { 2, 0, 10 } };
 		SparseMatrix spareMatrix1 = new SparseMatrix(matrix1);
-		SparseMatrix spareMatrix2 = new SparseMatrix(matrix2);
 		assertArrayEquals(addResult, spareMatrix1.addTwoSparseMatrices(matrix2));
 	}
 	@Test(expected = AssertionError.class)
@@ -61,7 +59,6 @@ public class SparseMatrixTest {
 		int matrix2[][] = {{}};
 		int addResult[][] = { { 0, 1, 0 }, { 4, 0, 8 }, { 0, 0, 5 } };
 		SparseMatrix spareMatrix1 = new SparseMatrix(matrix1);
-		SparseMatrix spareMatrix2 = new SparseMatrix(matrix2);
 		assertArrayEquals(addResult, spareMatrix1.addTwoSparseMatrices(matrix2));
 	}
 
@@ -72,16 +69,13 @@ public class SparseMatrixTest {
 		int matrix2[][] = { { 0, 1, 0 }, { 4, 0, 8 }, { 0, 0, 5 } };
 		int multiplyResult[][] = { { 16, 0, 32 }, { 0, 1, 0 }, { 0, 2, 25 } };
 		SparseMatrix spareMatrix1 = new SparseMatrix(matrix1);
-		SparseMatrix spareMatrix2 = new SparseMatrix(matrix2);
 		assertArrayEquals(multiplyResult, spareMatrix1.multiplySparseMatrix(matrix2));
 	}
 	@Test(expected = AssertionError.class)
 	public void multiplyNegativeTest() {
 		int matrix1[][] = { { 0, 4, 0, 9 }, { 1, 0, 0, 6 }, { 2, 0, 5, 8 } };
 		int matrix2[][] = { { 0, 1, 0 }, { 4, 0, 8 }, { 0, 0, 5 } };
-		int multiplyResult[][] = { { 16, 0, 32 }, { 0, 1, 0 }, { 0, 2, 25 } };
 		SparseMatrix spareMatrix1 = new SparseMatrix(matrix1);
-		SparseMatrix spareMatrix2 = new SparseMatrix(matrix2);
 		assertEquals("unmatched matrices",spareMatrix1.multiplySparseMatrix(matrix2));
 	}
 

@@ -26,7 +26,7 @@ public final class InSet {
 		boolean answer = false;
 		int i;
 		
-//		assert size() < 1 : "Set size is 0";
+//		assert setOfIntegers.length < 1 : "Set size is 0";
 		if(setOfIntegers.length < 1)
 			throw new AssertionError("Set size is 0");
 		
@@ -62,8 +62,10 @@ public final class InSet {
 	public boolean isSubSet(InSet anotherSet) {
 		int i; 
 		
-//		assert (size() < 1 || anotherSet.size() < 1) : "Set size is 0";
-		if(setOfIntegers.length < 1 || anotherSet.size() < 1)
+//		System.out.println(setOfIntegers[2] + " " + anotherSet.setOfIntegers[2]);
+		
+//		assert (setOfIntegers.length < 1 || anotherSet.setOfIntegers.length < 1) : "Set size is 0";
+		if(setOfIntegers.length < 1 || anotherSet.setOfIntegers.length < 1)
 			throw new AssertionError("Set size is 0");
 
 		boolean answer = true;
@@ -71,7 +73,6 @@ public final class InSet {
 		{
 			if(!isMember(anotherSet.setOfIntegers[i]))
 			{
-				System.out.println();
 				answer = false;
 				break;
 			}
@@ -103,9 +104,9 @@ public final class InSet {
 	 * @param s2 is the second set
 	 * @return {inSet} union of two sets
 	 */
-	public int[] union(InSet set2) {
+	public List<Integer> union(InSet set2) {
 		
-//		assert (size() < 1 || set2.size() < 1) : "Set size is 0";
+//		assert (setOfIntegers.length < 1 || set2.setOfIntegers.length < 1) : "Set size is 0";
 		if(size() < 1 || set2.size() < 1)
 			throw new AssertionError("Set size is 0");
 		
@@ -122,11 +123,6 @@ public final class InSet {
 				unionList.add(set2.setOfIntegers[i]);
 			}
 		}
-		int[] unionSet = new int[unionList.size()];
-	    for (i=0; i < unionSet.length; i++)
-	    {
-	        unionSet[i] = unionList.get(i).intValue();
-	    }
-		return unionSet;
+		return unionList;
 	}
 }

@@ -114,8 +114,9 @@ public class inSetTest {
 			int[] setArray2 = {1,2,3,7};
 			InSet set1 = new InSet(setArray1);
 			InSet set2 = new InSet(setArray2);
-			int[] expectedSet = {1,3,4,5,6,2,7};
-			assertArrayEquals(expectedSet, set1.union(set2));
+			int expectedValue = 2;
+			int actualValue = set1.union(set2).get(5);
+			assertEquals(expectedValue, actualValue);
 		}
 		@Test(expected=AssertionError.class) //negative test case
 		public void testUnion2()
@@ -124,7 +125,8 @@ public class inSetTest {
 			int[] setArray2 = {};
 			InSet set1 = new InSet(setArray1);
 			InSet set2 = new InSet(setArray2);
-			int[] expectedSet = {1,3,4,5,6,2,7};
-			assertArrayEquals(expectedSet, set1.union(set2));
+			int expectedValue = 0;
+			int actualValue = set1.union(set2).get(5);
+			assertEquals(expectedValue, actualValue);
 		}
 }

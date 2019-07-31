@@ -44,7 +44,9 @@ public class NumberOperations {
 	public int computeLCM(int x, int y)
 	{
 		if (x <= 0 || y <= 0) {
-			throw new ArithmeticException("Number is not positive");
+//			throw new ArithmeticException("Number is not positive");
+			System.out.println("Please enter a positive number");
+			return 0;
 		}
 
 	    if ((lcmValue % x == 0) && (lcmValue % y == 0))

@@ -76,10 +76,10 @@ public class NumberOperationsTest {
 		int y = 30;
 		assertEquals(330, numberObject.computeLCM(x, y));
 	}
-	@Test(expected=ArithmeticException.class) //negative test case
+	@Test
 	public void testLCM4() {
 		int x = 0;
 		int y = 24;
-		assertEquals(72, numberObject.computeLCM(x, y));
+		assertEquals(0, numberObject.computeLCM(x, y));
 	}
 }

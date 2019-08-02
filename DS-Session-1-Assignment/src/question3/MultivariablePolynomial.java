@@ -11,9 +11,10 @@ import java.util.List;
 public class MultivariablePolynomial {
 	
 	List<Term> multivariablePolynomial = new ArrayList<>();
+	int constantTerm;
 	
-	public MultivariablePolynomial(List<Term> termList) {
-		
+	public MultivariablePolynomial(int constantTerm, List<Term> termList) {
+		this.constantTerm = constantTerm;
 		this.multivariablePolynomial = termList;
 	}
 	

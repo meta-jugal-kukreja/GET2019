@@ -1,6 +1,10 @@
 package question1;
 
-
+/**
+ * This class represents the linked list. It has head which points to the first node and tail which points to the last node in the linked list as its data members.
+ * @author Jugal
+ * Dated 07/29/2019
+ */
 public class MyLinkedList {
 	
 	Node linkedListHead;
@@ -46,16 +50,16 @@ public class MyLinkedList {
 	
 	/**
 	 * This method generates a sub list which is to be rotated
-	 * @param L is the left position
-	 * @param R is the right position
-	 * @param N is number of steps through which the linked list is to be rotated
+	 * @param leftPosition is the left position
+	 * @param rightPosition is the right position
+	 * @param rotationNumber is number of steps through which the linked list is to be rotated
 	 */
-	public void generateResultantLinkedList(int L, int R, int N)
+	public void generateResultantLinkedList(int leftPosition, int rightPosition, int rotationNumber)
 	{
 		int leftCount = 1;
 		Node subListHead = null;
 		Node temporaryNode = linkedListHead;
-		while(leftCount != L-1)
+		while(leftCount != leftPosition-1)
 		{
 			temporaryNode = temporaryNode.next;
 			leftCount++;
@@ -64,13 +68,13 @@ public class MyLinkedList {
 		subListHead = temporaryNode.next;
 		
 		Node subListTail = subListHead;
-		int rightCount = L;
-		while(rightCount != R)
+		int rightCount = leftPosition;
+		while(rightCount != rightPosition)
 		{
 			subListTail = subListTail.next;
 			rightCount++;
 		}
-		modifySubList(leftNode, subListHead, subListTail, N);
+		modifySubList(leftNode, subListHead, subListTail, rotationNumber);
 	}
 	
 	/**
@@ -78,13 +82,13 @@ public class MyLinkedList {
 	 * @param leftNode is the node predecessor to the first nod in the sub list
 	 * @param head is the starting address of the sub list
 	 * @param tail is the ending address of the sub list
-	 * @param N is the number of steps to which the list is to be rotated
+	 * @param rotationNumber is the number of steps to which the list is to be rotated
 	 */
-	public void modifySubList(Node leftNode, Node head, Node tail, int N)
+	public void modifySubList(Node leftNode, Node head, Node tail, int rotationNumber)
 	{
 		Node temporaryNode = head;
 		int count = 1;
-		while(count != N)
+		while(count != rotationNumber)
 		{
 			temporaryNode = temporaryNode.next;
 			count++;

@@ -3,6 +3,12 @@ package question2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents the linked list. It has head which points to the first node and tail which points to the last node in the linked list as its data members.
+ * It has methods which manipulates the linked list
+ * @author Jugal
+ * Dated 07/29/2019
+ */
 public class MyLinkedList {
 
 	Node linkedListHead;
@@ -65,19 +71,16 @@ public class MyLinkedList {
 	boolean detectLoopInLinkedList()
 	{
 		boolean answer = false;
-		List<Node> nodeAddresses = new ArrayList<>();
 		Node temporaryNode = linkedListHead;
 		
 		while(temporaryNode != null)
 		{
-			if(nodeAddresses.contains(temporaryNode))
+			if(temporaryNode.getIsTraversed())
 			{
 				answer = true;
 				break;
 			}
-			else
-				nodeAddresses.add(temporaryNode);
-			
+			temporaryNode.setTraversed(true);
 			temporaryNode = temporaryNode.next;
 		}
 		

@@ -43,7 +43,7 @@ public class MultivariablePolynomialTest {
 	@Test
 	public void testVisualizePolynomial()
 	{
-		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(termList);
+		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(5, termList);
 		String polynomialString = polynomialObject.visualiseMultivariablePolynomial();
 		String expectedPolynomialString = "4*x^2*y^1*z^1 + 3*x^3*y^2";
 		assertEquals(expectedPolynomialString, polynomialString);
@@ -53,7 +53,7 @@ public class MultivariablePolynomialTest {
 	@Test
 	public void testDegreeOfPolynomial()
 	{
-		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(termList);
+		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(6, termList);
 		assertEquals(5, polynomialObject.calculatePolynomialDegree());
 	}
 }

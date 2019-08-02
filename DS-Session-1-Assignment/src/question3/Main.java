@@ -28,7 +28,7 @@ public class Main {
 		termList.add(term1);
 		termList.add(term2);
 		
-		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(termList);
+		MultivariablePolynomial polynomialObject = new MultivariablePolynomial(5, termList);
 		String polynomialString = polynomialObject.visualiseMultivariablePolynomial();
 		System.out.println("Multivariable Polynomial = " + polynomialString);
 		System.out.println("Degree = " + polynomialObject.calculatePolynomialDegree());

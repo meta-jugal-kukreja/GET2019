@@ -11,7 +11,7 @@ public interface PriorityQueue {
 	 * @param value to be added to the queue
 	 * @return {boolean} true if value is added else false
 	 */
-	public boolean enqueue(Job value) ;
+	public void enqueue(Job job) ;
 
 	/**
 	 * This method removes a value from the queue

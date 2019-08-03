@@ -37,4 +37,8 @@ public class Bowler {
 		return numberOfBallLeft;
 	}
 
+	public void setNumberOfBallLeft(int numberOfBallLeft) {
+		this.numberOfBallLeft = numberOfBallLeft;
+	}
+
 }

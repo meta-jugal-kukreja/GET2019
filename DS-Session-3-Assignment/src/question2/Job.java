@@ -7,17 +7,17 @@ package question2;
  */
 public class Job {
 	
-	private int value;
+	private String jobName;
 	private int priority;
 	
-	Job(int value, int priority)
+	Job(String jobName, int priority)
 	{
-		this.value = value;
+		this.jobName = jobName;
 		this.priority = priority;
 	}
 
-	public int getValue() {
-		return value;
+	public String getJobName() {
+		return jobName;
 	}
 
 	public int getPriority() {

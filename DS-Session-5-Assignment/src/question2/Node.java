@@ -2,7 +2,7 @@ package question2;
 /**
  * This class represents a node in a linked list
  * @author Jugal
- *
+ * Dated 08/04/2019
  */
 public class Node {
 

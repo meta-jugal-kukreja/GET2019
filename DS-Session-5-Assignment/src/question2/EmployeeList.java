@@ -1,5 +1,10 @@
 package question2;
 
+/**
+ * This class represents the Linked list of employees
+ * @author Jugal
+ * Dated 08/04/2019
+ */
 public class EmployeeList {
 	
 	Node linkedListHead;
@@ -34,59 +39,71 @@ public class EmployeeList {
         }    
     }
 	
+	/**
+	 * This method sorts the given employee list with the insertion sort method.
+	 */
 	void sortEmployeeList()
 	{
 		Node currentNode = linkedListHead;
-		
 		while(currentNode != null)
 		{
 			Node nextNode = currentNode.next;
-			applyInsertionSort(currentNode);
-			currentNode = nextNode;
-		}
-	}
-	
-	void applyInsertionSort(Node node) {
-		
-		if(sortedLinkedListHead == null)
-		{
-			node.next = sortedLinkedListHead;
-			sortedLinkedListHead = node;
-		}
-		else
-		{
-			Node temporaryNode = sortedLinkedListHead;
-			while(temporaryNode != null)
+			if((sortedLinkedListHead == null) || 
+					(sortedLinkedListHead.getEmployeeSalaray() <= currentNode.getEmployeeSalaray()))
 			{
-				if((temporaryNode.getEmployeeSalaray() > node.getEmployeeSalaray()) || 
-						(temporaryNode.getEmployeeSalaray() == node.getEmployeeSalaray()))
+				if(sortedLinkedListHead == null)
 				{
-					if(temporaryNode.getEmployeeSalaray() > node.getEmployeeSalaray())
-					{
-						temporaryNode = temporaryNode.next;
-					}
-					else if((temporaryNode.getEmployeeSalaray() == node.getEmployeeSalaray()) && 
-							(temporaryNode.getEmployeeAge() < node.getEmployeeAge())) 
-					{
-						temporaryNode = temporaryNode.next;
-					}
-					else
-					{
-						break;
-					}
+					currentNode.next = sortedLinkedListHead;
+					sortedLinkedListHead = currentNode;
+				}
+				else if(sortedLinkedListHead.getEmployeeSalaray() < currentNode.getEmployeeSalaray())
+				{
+					currentNode.next = sortedLinkedListHead;
+					sortedLinkedListHead = currentNode;
+				}
+				else if((sortedLinkedListHead.getEmployeeSalaray() == currentNode.getEmployeeSalaray()) && 
+						(sortedLinkedListHead.getEmployeeAge() > currentNode.getEmployeeAge()))
+				{
+					currentNode.next = sortedLinkedListHead;
+					sortedLinkedListHead = currentNode;
 				}
 				else
 				{
-					break;
+					Node temporary = sortedLinkedListHead;
+					while((temporary.next != null) && (temporary.next.getEmployeeSalaray() == currentNode.getEmployeeSalaray()) && 
+							(temporary.next.getEmployeeAge() < currentNode.getEmployeeAge()))
+					{
+						temporary = temporary.next;
+					}
+					currentNode.next = temporary.next;
+					temporary.next = currentNode;
 				}
 			}
-			node.next = temporaryNode.next;
-			temporaryNode.next = node;
-			System.out.println("List after operation");
-			printList(sortedLinkedListHead);
+			else
+			{
+				Node temporaryNode = sortedLinkedListHead;
+				while((temporaryNode.next != null) && 
+						(temporaryNode.next.getEmployeeSalaray() >= currentNode.getEmployeeSalaray()))
+				{
+					if((temporaryNode.next.getEmployeeSalaray() == currentNode.getEmployeeSalaray()) &&
+							temporaryNode.next.getEmployeeAge() < currentNode.getEmployeeAge())
+					{
+						temporaryNode = temporaryNode.next;
+					}
+					else if(temporaryNode.next.getEmployeeSalaray() > currentNode.getEmployeeSalaray())
+					{
+						temporaryNode = temporaryNode.next;
+					}
+				}
+				
+				temporaryNode.next = currentNode;
+				temporaryNode.next.next = null;
+			}
+			currentNode = nextNode;
 		}
+		
 	}
-
+	
 	/**
 	 * This method prints the linked list
 	 */
@@ -96,8 +113,10 @@ public class EmployeeList {
 		int i = 1;
 		while(temporaryNode != null)
 		{
-			System.out.print("Employee : " + i);
-			System.out.print("\t " + temporaryNode.getEmployeeSalaray() + "\t" + temporaryNode.getEmployeeName());
+			System.out.println("Employee : " + i);
+			System.out.print("Employee Name : " + temporaryNode.getEmployeeName() + 
+					"  Employee Salaray : " + temporaryNode.getEmployeeSalaray() + 
+					"  Employee Age : " + temporaryNode.getEmployeeAge());
 			temporaryNode = temporaryNode.next;
 			i++;
 			System.out.println();

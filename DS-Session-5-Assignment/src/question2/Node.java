@@ -6,7 +6,7 @@ package question2;
  */
 public class Node {
 
-	int employeeId;
+	double employeeSalary;
 	int employeeAge;
 	String employeeName;
 	Node next;
@@ -15,11 +15,29 @@ public class Node {
 	 * Constructor to initialize the data members of the class
 	 * @param data
 	 */
-	public Node(int employeeId, int employeeAge ,String employeeName)
+	public Node(double employeeSalary, int employeeAge ,String employeeName)
 	{
-		this.employeeId = employeeId;
+		this.employeeSalary = employeeSalary;
 		this.employeeAge = employeeAge;
 		this.employeeName = employeeName;
 		this.next = null;
 	}
+
+	public double getEmployeeSalaray() {
+		return employeeSalary;
+	}
+
+	public int getEmployeeAge() {
+		return employeeAge;
+	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+	
+	
 }

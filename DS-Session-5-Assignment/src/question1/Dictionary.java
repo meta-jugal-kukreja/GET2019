@@ -29,7 +29,7 @@ public interface Dictionary {
      * This method returns the sorted list of key value pair
      * @return {List<Data>}
      */
-    public List<Data> sortedOrder();
+    public List<Data> sortedKeyValuePair();
 
     /**
      * This method returns the list of sorted nodes between the given two key values

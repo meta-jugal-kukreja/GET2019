@@ -7,9 +7,9 @@ package question1;
  */
 public class Node {
 	
-	private Data keyValuePair;
-	private Node leftChild;
-	private Node rightChild;
+	 Data keyValuePair;
+	 Node leftChild;
+	 Node rightChild;
 	
 	/**
 	 * Constructor to initialize the data members of the class
@@ -45,4 +45,7 @@ public class Node {
 		return rightChild;
 	}
 
+	public void setKeyValuePair(Data keyValuePair) {
+		this.keyValuePair = keyValuePair;
+	}
 }

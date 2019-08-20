@@ -2,14 +2,23 @@
 * Procedure 1 : Create a Stored procedure to retrieve average sales of each product in a month. Month and year will be input parameter to function.
 */
 DELIMITER $$
-CREATE PROCEDURE calculateAverageSale(month INT, year INT)
+CREATE PROCEDURE calculateAverageSale(in month INT, in year INT)
     BEGIN
-        SELECT p.product_name, AVG(o.order_amount)
-        FROM products p, orders o
-        WHERE
-            p.product_id = o.product_id;
+        CALL calculateTotalSale(month, year, @number_of_products);
+        SELECT p.product_name, COUNT(o.order_id)/number_of_products 
+        FROM products p, orders o 
+        WHERE p.product_id = o.product_id AND
+        MONTH(o.order_date) = month AND YEAR(o.order_date) = year
+        GROUP BY p.product_name;
     END $$
 
+# Utility procedure to calculate the total sales in the month
+DELIMITER @@
+CREATE PROCEDURE calculateTotalSale(in month INT, in year INT, out number_of_products INT)
+    BEGIN
+         SELECT COUNT(order_id) INTO number_of_products
+        FROM orders WHERE MONTH(order_date) = month AND YEAR(order_date) = year;
+    END @@
 
 /*
 * Procedure 2 : Create a stored procedure to retrieve table having order detail with status for a given period. 

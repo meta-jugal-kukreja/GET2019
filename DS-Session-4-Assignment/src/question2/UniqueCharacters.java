@@ -16,13 +16,13 @@ public class UniqueCharacters {
 
 	private Map<String,Integer> cacheMap;
 	
-	void setCache(Map<String, Integer> cacheMap) {
-		this.cacheMap = cacheMap;
-	}
-	
-	UniqueCharacters() {
-		
+	/**
+	 * Constructor to initialize the cacheMap
+	 * @param cacheMap is the cache Map
+	 */
+	UniqueCharacters(Map<String, Integer> cacheMap) {
 		this.cacheMap=new HashMap<String, Integer>();
+		this.cacheMap = cacheMap;
 	}
 	
 	/**
@@ -36,8 +36,7 @@ public class UniqueCharacters {
 		
 		if(inputString==null || inputString.equals(" ")){
 			
-			throw new AssertionError("input string is invalid");
-			
+			System.out.println("Input string is Invalid");
 		}
 		else{
 			if(cacheMap.containsKey(inputString)){

@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class UniqueCharactersTest {
 	
-	UniqueCharacters count = new UniqueCharacters();
+	UniqueCharacters count = new UniqueCharacters(null);
 
 	@Test
 	public void testCountUniqueCharacters1() {

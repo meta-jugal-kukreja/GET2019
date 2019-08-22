@@ -1,6 +1,7 @@
 package question1;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * This class handles the UI part of EmployeeCollections class
@@ -13,28 +14,59 @@ public class Main {
 		
 		List<Employee> employeeList;
 		EmployeeCollections employeeObject = new EmployeeCollections();
-		if(employeeObject.addEmployee(1, "Jugal", "Udaipur"))
+		Scanner inputScanner = new Scanner(System.in);
+		int employeeId = 0;
+		String choice, dummy;
+		do
 		{
-			System.out.println("Employee Added");
-		}
-		if(employeeObject.addEmployee(3, "Aman", "Kanpur"))
-		{
-			System.out.println("Employee Added");
-		}
-		if(employeeObject.addEmployee(2, "Babbar", "Jaipur"))
-		{
-			System.out.println("Employee Added");
-		}
-		
-		System.out.println("\nThe Employees are : (unsorted)");
-		employeeList = employeeObject.getEmployeeList();
-		Main.printList(employeeList);
-		System.out.println("\nEmployees sorted by their id : ");
-		employeeList = employeeObject.sortEmployeeById();
-		Main.printList(employeeList);
-		System.out.println("\nEmployees sorted by their name : ");
-		employeeList = employeeObject.sortEmployeeByName();
-		Main.printList(employeeList);
+			System.out.println("\n1. Add Employee");
+			System.out.println("2. Display the employees");
+			System.out.println("3. Sort employees according to Id");
+			System.out.println("4. Sort employees according to Name");
+			System.out.println("5. Exit");
+			
+			System.out.print("Enter your choice : ");
+			choice = inputScanner.nextLine();
+			switch(choice)
+			{
+			case "1" :
+//				dummy = inputScanner.next();
+				System.out.print("\nEnter the name of the employee : ");
+				String employeeName = inputScanner.nextLine();
+				System.out.print("Enter the address of the employee : ");
+				String employeeAddress = inputScanner.nextLine();
+				if(employeeObject.addEmployee(++employeeId, employeeName, employeeAddress))
+				{
+					System.out.println("Employee Added");
+				}
+				break;
+				
+			case "2" :
+				System.out.println("\nThe Employees are : (unsorted)");
+				employeeList = employeeObject.getEmployeeList();
+				Main.printList(employeeList);
+				break;
+				
+			case "3" : 
+				System.out.println("\nEmployees sorted by their id : ");
+				employeeList = employeeObject.sortEmployeeById();
+				Main.printList(employeeList);
+				break;
+				
+			case "4" : 
+				System.out.println("\nEmployees sorted by their name : ");
+				employeeList = employeeObject.sortEmployeeByName();
+				Main.printList(employeeList);
+				break;
+				
+			case "5" : inputScanner.close();
+				break;
+			
+			default : System.out.println("Enter valid choice"); 
+			
+			}
+		}while(!"5".equals(choice));
+
 	}
 	
 	/**
@@ -43,12 +75,13 @@ public class Main {
 	 */
 	static void printList(List<Employee> list)
 	{
-		for(int i = 0; i < list.size(); i++)
+		int i = 0;
+		for(Employee employee : list)
 		{
-			System.out.println("Employee " + (i + 1));
-			System.out.println("\tId = " + list.get(i).getEmployeeId());
-			System.out.println("\tName = " + list.get(i).getEmployeeName());
-			System.out.println("\tAddress = " + list.get(i).getEmployeeAddress());
+			System.out.println("Employee " + (++i));
+			System.out.println("\tId = " + employee.getEmployeeId());
+			System.out.println("\tName = " + employee.getEmployeeName());
+			System.out.println("\tAddress = " + employee.getEmployeeAddress());
 		}
 	}
 

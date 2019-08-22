@@ -1,6 +1,7 @@
 package question1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EmployeeCollections {
@@ -24,18 +25,18 @@ public class EmployeeCollections {
 	 */
 	boolean addEmployee(int employeeId, String employeeName, String employeeAddress)
 	{
-		boolean wasEmployeeAdded = false;
+		boolean isEmployeeAdded = false;
 		if((employeeId > 0) && isEmployeeUnique(employeeId) && isEmployeeNameValid(employeeName) && employeeAddress != null)
 		{
 			Employee employee = new Employee(employeeId, employeeName, employeeAddress);
 			employeeList.add(employee);
-			wasEmployeeAdded = true;
+			isEmployeeAdded = true;
 		}
 		else
 		{
-			throw new AssertionError();
+			System.out.println("There was an error while adding the employee because of invalid parameters");
 		}
-		return wasEmployeeAdded;
+		return isEmployeeAdded;
 	}
 	
 	/**
@@ -44,21 +45,9 @@ public class EmployeeCollections {
 	 */
 	List<Employee> sortEmployeeById()
 	{
-		Employee temporaryEmployee;
-		int i,j;
-		for(i = 0; i < employeeList.size(); i++)
-		{
-			for(j = 0; j < employeeList.size() - i - 1; j++)
-			{
-				if(employeeList.get(j).getEmployeeId() > employeeList.get(j+1).getEmployeeId())
-				{
-					temporaryEmployee = employeeList.get(j);
-					employeeList.set(j, employeeList.get(j+1));
-					employeeList.set(j+1, temporaryEmployee);
-				}
-			}
-		}
-		return employeeList;
+		List<Employee> sortedEmployees = this.employeeList;
+		Collections.sort(sortedEmployees, new SortOnId());
+		return sortedEmployees;
 	}
 	
 	/**
@@ -67,21 +56,9 @@ public class EmployeeCollections {
 	 */
 	List<Employee> sortEmployeeByName()
 	{
-		Employee temporaryEmployee;
-		int i,j;
-		for(i = 0; i < employeeList.size(); i++)
-		{
-			for(j = 0; j < employeeList.size() - i - 1; j++)
-			{
-				if(employeeList.get(j).getEmployeeName().compareTo(employeeList.get(j+1).getEmployeeName()) > 0)
-				{
-					temporaryEmployee = employeeList.get(j);
-					employeeList.set(j, employeeList.get(j+1));
-					employeeList.set(j+1, temporaryEmployee);
-				}
-			}
-		}
-		return employeeList;
+		List<Employee> sortedEmployees = this.employeeList;
+		Collections.sort(sortedEmployees, new SortOnName());
+		return sortedEmployees;
 	}
 	/**
 	 * This method checks whether an employee is unique by checking its employee id

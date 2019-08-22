@@ -17,7 +17,7 @@ public class QueueImplementation implements Queue{
 	 *  @param data is the data to be inserted
 	 */
 	@Override
-	public void enqueue(int data) throws Exception {
+	public void enqueue(int data) {
 		if(isQueueEmpty()) //If queue is empty set start and end to 0
 		{
 			start = 0;
@@ -25,7 +25,7 @@ public class QueueImplementation implements Queue{
 		}
 		else if(isQueueFull())
 		{
-			throw new Exception("Queue is full");
+			System.out.println("The Queue is full");
 		}
 		else
 		{
@@ -41,10 +41,10 @@ public class QueueImplementation implements Queue{
 	 * This method deletes the data from the front
 	 */
 	@Override
-	public void dequeue() throws Exception {
+	public void dequeue(){
 		if(isQueueEmpty())
 		{
-			throw new Exception("The queue is empty");
+			System.out.println("The queue is empty");
 		}
 		else if(start == end)
 		{
@@ -86,11 +86,11 @@ public class QueueImplementation implements Queue{
 	 * This method displays the queue
 	 */
 	@Override
-	public void displayQueue() throws Exception {
+	public void displayQueue() {
 		
 		if(isQueueEmpty())
 		{
-			throw new Exception("Queue is Empty");
+			System.out.println("Queue is Empty");
 		}
 		else
 		{

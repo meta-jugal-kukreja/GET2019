@@ -8,10 +8,10 @@ package question2;
 public interface Queue {
 	
 	//Method for inserting data in the queue
-	public void enqueue(int data) throws Exception;
+	public void enqueue(int data);
 	
 	//Method for deleting data from the queue
-	public void dequeue() throws Exception;
+	public void dequeue();
 	
 	//Method for checking if the queue is empty
 	public boolean isQueueEmpty();
@@ -20,6 +20,6 @@ public interface Queue {
 	public boolean isQueueFull();
 	
 	//Method displays the queue
-	public void displayQueue() throws Exception;
+	public void displayQueue();
 
 }

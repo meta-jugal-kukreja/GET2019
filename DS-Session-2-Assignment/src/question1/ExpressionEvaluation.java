@@ -24,7 +24,7 @@ public class ExpressionEvaluation {
 	 * @return {String} postfix expression
 	 */
 	String infixToPostfixConversion() {
-		StringBuilder postfixExpression = new StringBuilder("");
+		StringBuilder postfixExpression = new StringBuilder();
 		String infixArray[] = infixExpression.split(" ");
 		
 		for (int i = 0; i < infixArray.length; i++) {

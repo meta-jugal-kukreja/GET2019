@@ -7,12 +7,19 @@ package question;
  */
 public abstract class Reptile extends Animal {
 
+	private final static String speciality = "Crawling";
+	private final static String category = "Reptile";
 	/**
 	 * Constructor to assign specialty and category
 	 */
-	public Reptile()
+	public Reptile(String name, int age, double weight, String type)
 	{
-		this.speciality = "Crawling";
-		this.category = "Reptile";
+		super(name, age, weight, category, type);
 	}
+	
+	//Getter methods
+	public static String getSpeciality() {
+		return speciality;
+	}
+
 }

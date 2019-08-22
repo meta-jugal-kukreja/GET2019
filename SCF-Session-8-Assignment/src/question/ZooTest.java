@@ -17,7 +17,7 @@ public class ZooTest
 		zoo1.addZone("Reptile", 4);
 				
 		zoo1.addCage("Lion", 3);
-		assertEquals(true, zoo1.addAnimal("Lion", "Bhoora"));
+		assertEquals(true, zoo1.addAnimal("Lion", "Bhoora", 25, 50.0));
 	}
 	@Test
 	public void testAddAnimal2()
@@ -29,9 +29,9 @@ public class ZooTest
 		zoo1.addZone("Reptile", 4);
 		
 		zoo1.addCage("Peacock", 1);
-		assertEquals(true, zoo1.addAnimal("Peacock", "nini"));
+		assertEquals(true, zoo1.addAnimal("Peacock", "nini", 10, 10.0));
 		zoo1.addCage("Lion", 1);
-		assertEquals(true, zoo1.addAnimal("Lion", "Babbar"));
+		assertEquals(true, zoo1.addAnimal("Lion", "Babbar", 25, 56.0));
 	}
 	@Test(expected = AssertionError.class)
 	public void testAddAnimal3()
@@ -43,8 +43,8 @@ public class ZooTest
 		zoo1.addZone("Reptile", 4);
 		
 		zoo1.addCage("Peacock", 1);
-		assertEquals(true, zoo1.addAnimal("Peacock", "nini"));
-		assertEquals(true, zoo1.addAnimal("Peacock", "nini"));
+		assertEquals(true, zoo1.addAnimal("Peacock", "nini",10, 10.0));
+		assertEquals(true, zoo1.addAnimal("Peacock", "nini",10, 10.0));
 	}
 	
 	//These tests test the removeAnimal method
@@ -58,11 +58,11 @@ public class ZooTest
 		zoo1.addZone("Reptile", 4);
 				
 		zoo1.addCage("Lion", 3);
-		zoo1.addAnimal("Lion", "boora");
+		zoo1.addAnimal("Lion", "boora", 20, 60.0);
 		
 		zoo1.addCage("Peacock", 1);
-		zoo1.addAnimal("Peacock", "nini");
-		zoo1.addAnimal("Lion", "haha");
+		zoo1.addAnimal("Peacock", "nini", 10, 10.0);
+		zoo1.addAnimal("Lion", "haha", 25, 56.0);
 		
 		assertEquals(true, zoo1.removeAnimal("Lion", "haha"));
 	}
@@ -76,11 +76,11 @@ public class ZooTest
 		zoo1.addZone("Reptile", 4);
 				
 		zoo1.addCage("Lion", 3);
-		zoo1.addAnimal("Lion", "boora");
+		zoo1.addAnimal("Lion", "boora", 30, 41.0);
 		
 		zoo1.addCage("Peacock", 1);
-		zoo1.addAnimal("Peacock", "nini");
-		zoo1.addAnimal("Lion", "Babbar");
+		zoo1.addAnimal("Peacock", "nini", 10, 10.0);
+		zoo1.addAnimal("Lion", "Babbar", 36, 70.0);
 		
 		assertEquals(false, zoo1.removeAnimal("Lion", "hah"));
 	}

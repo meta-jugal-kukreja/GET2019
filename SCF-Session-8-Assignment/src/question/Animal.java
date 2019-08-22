@@ -9,20 +9,32 @@ abstract class Animal {
 	
 	 public String animalName;
 	 public int animalId = 0;
-	 public String category;
-	 public String speciality;
 	 public double animalWeight;
 	 public int animalAge;
+	 public String animalCategory;
 	 public String animalType;
 	 
 	 public abstract String getSound();
-	 
-	 /**
+
+	/**
 	  * The constructor only increments the id whenever its object is created
 	  */
-	 Animal()
+	 Animal(String name,int age, double weight, String category, String type)
 	 {
-		 animalId++;
+		 this.animalId++;
+	     this.animalName = name;
+	     this.animalAge = age;
+	     this.animalWeight = weight;
+	     this.animalCategory = category;
+	     this.animalType = type;
 	 }
+	 
+	 public String getAnimalCategory() {
+		return animalCategory;
+	}
 
+	public String getAnimalType() {
+		return animalType;
+	} 
+	 
 }

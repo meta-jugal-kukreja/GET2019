@@ -72,21 +72,21 @@ public class Zoo {
 	 * @param animalType is the type of that animal name
 	 * @return {Animal} animal object
 	 */
-	public Animal buildAnimalObject(String animalName, String animalType)
+	public Animal buildAnimalObject(String animalName, String animalType, int animalAge, double animalWeight)
 	{
 		Animal animalObj = null;
 		switch (animalType.toLowerCase())
 		{
 		case "lion":
-			animalObj = new Lion(animalName, animalType, Lion.class.getSuperclass().getSimpleName());
+			animalObj = new Lion(animalName, animalAge, animalWeight);
 			break;
 		
 		case "peacock":
-			animalObj = new Peacock(animalName, animalType, Peacock.class.getSuperclass().getSimpleName());
+			animalObj = new Peacock(animalName, animalAge, animalWeight);
 			break;
 			
 		case "snake":
-			animalObj = new Snake(animalName, animalType, Snake.class.getSuperclass().getSimpleName());
+			animalObj = new Snake(animalName, animalAge, animalWeight);
 			break;		
 		}
 		
@@ -99,38 +99,38 @@ public class Zoo {
 	 * @param animalNameToBeAdded is the name of animal to be added
 	 * @return {boolean}
 	 */
-	public boolean addAnimal(String animalTypeToBeAdded, String animalNameToBeAdded)
+	public boolean addAnimal(String animalTypeToBeAdded, String animalNameToBeAdded, int ageOfAnimalToBeAdded, double weightOfAnimalToBeAdded)
 	{
-		boolean wasAnimalAdded = false;
+		boolean isAnimalAdded = false;
 		
-		Animal animalObj = buildAnimalObject(animalNameToBeAdded, animalTypeToBeAdded);
+		Animal animalObj = buildAnimalObject(animalNameToBeAdded, animalTypeToBeAdded, ageOfAnimalToBeAdded, weightOfAnimalToBeAdded);
 
 		/*
 		 * First traverse to zone then cage then add animal if all the conditions are met
 		 */
 		for(Zone zone : zoneList)
 		{
-			if(zone.zoneCategory.equals(animalObj.category))
+			if(zone.zoneCategory.equals(animalObj.getAnimalCategory()))
 			{
 				for(Cage cage : zone.cageList)
 				{
-					if(cage.cageType.equals(animalObj.animalType) && cage.cageCapacity > cage.animalList.size())
+					if(cage.cageType.equals(animalObj.getAnimalType()) && cage.cageCapacity > cage.animalList.size())
 					{
 						for(Animal animal : cage.animalList)
 						{
 							assert animal.animalName.equals(animalNameToBeAdded) : "Animal of this name is already present";
 						}
 						cage.animalList.add(animalObj);
-						wasAnimalAdded = true;
+						isAnimalAdded = true;
 						break;
 					}
 				}
-				if(wasAnimalAdded)
+				if(isAnimalAdded)
 					break;
 			}
 		}
 		
-		return wasAnimalAdded;
+		return isAnimalAdded;
 	}
 	
 	/**
@@ -142,7 +142,7 @@ public class Zoo {
 	 */
 	public boolean removeAnimal(String animalTypeToBeRemoved, String animalNameToBeRemoved)
 	{
-		boolean wasRemoved = false;
+		boolean isAnimalRemoved = false;
 		/*
 		 * First traverse to zone then cage then remove animal if all the conditions are met
 		 */
@@ -159,19 +159,19 @@ public class Zoo {
 							if(animal.animalName.equals(animalNameToBeRemoved))
 							{
 								cage.animalList.remove(indexOfAnimalInCage(cage.animalList, animalNameToBeRemoved));
-								wasRemoved = true;
+								isAnimalRemoved = true;
 								break;
 							}
 						}
 					}
-					if(wasRemoved)
+					if(isAnimalRemoved)
 						break;
 				}
-				if(wasRemoved)
+				if(isAnimalRemoved)
 					break;
 			}
 		}
-		return wasRemoved;
+		return isAnimalRemoved;
 	}
 	
 	/**

@@ -7,22 +7,20 @@ package question;
  */
 public class Snake extends Reptile {
 	
+	private final static String type = "Snake";
 	/**
 	 * Constructor to initialize the object
 	 * @param name is the name of the animal
 	 * @param type is the type of the animal
 	 * @param category is the category of the animal
 	 */
-	public Snake(String name, String type, String category) {
-		
-		this.animalName = name;
-		this.category = category;
-		this.animalType = type;
+	public Snake(String name, int age, double weight) {
+		super(name, age, weight, type);
 	}
 	
 	@Override
 	public String getSound() {
 		return "Hiss";
 	}
-	
+
 }

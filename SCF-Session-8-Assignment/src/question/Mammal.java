@@ -7,12 +7,19 @@ package question;
  */
 public abstract class Mammal extends Animal{
 
+	private final static String speciality = "Walks";
+	private final static String category = "Mammal";
 	/**
 	 * Constructor to assign specialty and category
 	 */
-	public Mammal()
+	public Mammal(String name, int age, double weight, String type)
 	{
-		this.speciality = "Walks";
-		this.category = "Mammal";
+		super(name, age, weight, category, type);
 	}
+	
+	//Getter methods
+	public static String getSpeciality() {
+		return speciality;
+	}
+	
 }

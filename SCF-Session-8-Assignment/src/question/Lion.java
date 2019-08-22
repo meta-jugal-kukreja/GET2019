@@ -7,6 +7,7 @@ package question;
  */
 public class Lion extends Mammal {
 
+	private final static String type = "Lion";
 	/**
 	 * Constructor to initialize the object
 	 * 
@@ -14,11 +15,8 @@ public class Lion extends Mammal {
 	 * @param type is the type of the animal
 	 * @param category is the category of the animal
 	 */
-	public Lion(String name, String type, String category) {
-
-		this.animalName = name;
-		this.category = category;
-		this.animalType = type;
+	public Lion(String name, int age, double weight) {
+		super(name, age, weight, type);
 	}
 
 	@Override

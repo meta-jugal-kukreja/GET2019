@@ -43,7 +43,9 @@ public class Main {
 					
 				case "5" :	displayZoo(); break;
 				
-				case "6" :	flag = false; break;
+				case "6" :	
+					flag = false; 
+					break;
 			
 				default: 	System.out.println("Wrong selection!");
 			}
@@ -94,11 +96,15 @@ public class Main {
 		String animalType = inputScanner.nextLine();
 		System.out.print("Add the name of the Animal : ");
 		String animalName = inputScanner.nextLine();
+		System.out.print("Add the age of the Animal : ");
+		int animalAge = inputScanner.nextInt();
+		System.out.print("Add the weight of the Animal : ");
+		double animalWeight = inputScanner.nextDouble();
 		
-		if(zooManagement.addAnimal(animalType, animalName))
-			System.out.println("Animal of type " + animalType + " of name " + animalName + " is added.");
+		if(zooManagement.addAnimal(animalType, animalName, animalAge, animalWeight))
+			System.out.println("\nAnimal of type " + animalType + " of name " + animalName + " is added.");
 		else
-			System.out.println("Animal was not added");
+			System.out.println("\nAnimal was not added");
 		
 	}
 	
@@ -137,6 +143,8 @@ public class Main {
 					System.out.println("\t\tAnimal " + (k + 1) + " : ");
 					System.out.println("\t\tAnimal Name : " + animal.animalName);
 					System.out.println("\t\tAnimal Type : " + animal.animalType);
+					System.out.println("\t\tAnimal Age : " + animal.animalAge);
+					System.out.println("\t\tAnimal Weight : " + animal.animalWeight);
 					System.out.println();
 				}
 				System.out.println();

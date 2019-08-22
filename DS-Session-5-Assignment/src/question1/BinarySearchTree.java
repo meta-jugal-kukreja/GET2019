@@ -6,10 +6,10 @@ import java.util.List;
 import org.json.simple.JSONObject;
 
 /**
- * This class represents the Binary Search Tree for the given Dictionary
- * @author Jugal
- * Dated 08/06/2019
- */
+* This class represents the Binary Search Tree for the given Dictionary
+* @author Jugal
+* Dated 08/06/2019
+*/
 public class BinarySearchTree implements Dictionary {
 	
 	 Node root;
@@ -25,22 +25,19 @@ public class BinarySearchTree implements Dictionary {
         }
 	}
 
-	 /**
-     * This method adds node to a tree by calling another method which inserts the node recursively in the tree
-     * @param key is the key
-     * @param value is the value of the key
-     * @return true if tree node is added successfully else false
-     */
+	/**
+    * This method adds node to a tree by calling another method which inserts the node recursively in the tree
+    * @param key is the key
+    * @param value is the value of the key
+    * @return true if tree node is added successfully else false
+    */
 	@Override
 	public void addKeyValuePair(String key, String value) {
 		
-		 // if key is empty
-        if (key == null || key.equals(" ")) {
-            throw new AssertionError("Key cannot be Empty");
-        }
-        // if value is empty
-        else if (value == null || value.equals(" ")) {
-            throw new AssertionError("Value cannot be Empty");
+		// if key is empty
+        if (key == null || key.equals(" ") || value == null || value.equals(" ")) {
+            System.out.println("Key cannot be Empty");
+            return;
         }
         // create new Node to be inserted
         Node newNode = new Node(new Data(key, value));
@@ -51,12 +48,12 @@ public class BinarySearchTree implements Dictionary {
 	}
 
 	/**
-	 * This is the helper method which is used to insert the nodes in the binary search tree recursively
-	 * @param currentNode is the node where the new node is to be inserted
-	 * @param newNode is the node to be inserted
-	 * @return {Node}
-	 */
-	 Node insertRecursively(Node currentNode, Node newNode) {
+	* This is the helper method which is used to insert the nodes in the binary search tree recursively
+	* @param currentNode is the node where the new node is to be inserted
+	* @param newNode is the node to be inserted
+	* @return {Node}
+	*/
+	Node insertRecursively(Node currentNode, Node newNode) {
 		 //If the tree is empty then the newNode is the root of the node
 		 if(currentNode == null)
 		 {
@@ -77,25 +74,26 @@ public class BinarySearchTree implements Dictionary {
 	}
 
 	/**
-     * This method deletes a node with a given key
-     * @param key is the key to be deleted
-     */
+    * This method deletes a node with a given key
+    * @param key is the key to be deleted
+    */
 	@Override
 	public void deleteKeyValuePair(String key) {
 		// if key is empty
         if (key == null || key.equals(" ")) {
-            throw new AssertionError("invalid key");
+           System.out.println("Invalid Key");
+           return;
         }
         this.root = deleteRecursively(root, key);
         return;
 	}
 
 	/**
-	 * This is the helper method which is used to delete nodes in the binary search tree recursively
-	 * @param currentNode is the node which is to be checked for deletion
-	 * @param key is the key which is to be deleted
-	 * @return {Node}
-	 */
+	* This is the helper method which is used to delete nodes in the binary search tree recursively
+	* @param currentNode is the node which is to be checked for deletion
+	* @param key is the key which is to be deleted
+	* @return {Node}
+	*/
 	Node deleteRecursively(Node currentNode, String key) {
 		//if tree is empty
 		if(currentNode == null)
@@ -130,10 +128,10 @@ public class BinarySearchTree implements Dictionary {
 	}
 	
 	/**
-	 * Helper method to find the minimum key in the sub tree
-	 * @param currentNode is the root of the sub-tree
-	 * @return {Node} the minimum key
-	 */
+	* Helper method to find the minimum key in the sub tree
+	* @param currentNode is the root of the sub-tree
+	* @return {Node} the minimum key
+	*/
 	Data minValue(Node currentNode) {
         Data minKey = currentNode.getKeyValuePair();
         while (currentNode.leftChild != null) {
@@ -144,10 +142,10 @@ public class BinarySearchTree implements Dictionary {
     }
 
 	/**
-     * This method returns the value mapped to the given key
-     * @param key whose value is to be search
-     * @return {String} the value mapped to the given key
-     */
+    * This method returns the value mapped to the given key
+    * @param key whose value is to be search
+    * @return {String} the value mapped to the given key
+    */
 	@Override
 	public String getValueAtKey(String key) {
 		Node currentNode = this.root;
@@ -170,9 +168,9 @@ public class BinarySearchTree implements Dictionary {
 	}
 
 	/**
-     * This method returns the sorted list of key value pair
-     * @return {List<Data>}
-     */
+    * This method returns the sorted list of key value pair
+    * @return {List<Data>}
+    */
 	@Override
 	public List<Data> sortedKeyValuePair() {
 		List<Data> sortedDictionary = new ArrayList<>();
@@ -181,10 +179,10 @@ public class BinarySearchTree implements Dictionary {
 	}
 
 	/**
-	 * This is the helper method which is used to sort the nodes in the binary search tree recursively
-	 * @param currentNode is the current node of the tree
-	 * @param sortedDictionary is the list where the sorted dictionary is stored
-	 */
+	* This is the helper method which is used to sort the nodes in the binary search tree recursively
+	* @param currentNode is the current node of the tree
+	* @param sortedDictionary is the list where the sorted dictionary is stored
+	*/
 	void inorderRecursively(Node currentNode, List<Data> sortedDictionary) { 
         if (currentNode != null) { 
             inorderRecursively(currentNode.leftChild, sortedDictionary); 
@@ -194,11 +192,11 @@ public class BinarySearchTree implements Dictionary {
     } 
 	
 	 /**
-     * This method returns the list of sorted nodes between the given two key values
-     * @param key1 is smaller than key
-     * @param key2 requires to greater than key
-     * @return {List<Data>} list of sorted nodes between keys
-     */
+    * This method returns the list of sorted nodes between the given two key values
+    * @param key1 is smaller than key
+    * @param key2 requires to greater than key
+    * @return {List<Data>} list of sorted nodes between keys
+    */
 	@Override
 	public List<Data> sortBetweenTwoKeyValue(String key1, String key2) {
 		List<Data> sortedKeyValuePair = new ArrayList<>();
@@ -226,9 +224,9 @@ public class BinarySearchTree implements Dictionary {
 	}
 
 	/**
-	 * This method(Recursive) prints the tree in inOrder traversal.
-	 * @param root is the root of the tree
-	 */
+	* This method(Recursive) prints the tree in inOrder traversal.
+	* @param root is the root of the tree
+	*/
 	void printTree(Node root) { 
         if (root != null) { 
         	printTree(root.leftChild); 

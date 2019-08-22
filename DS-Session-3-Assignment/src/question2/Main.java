@@ -24,6 +24,12 @@ public class Main {
 		System.out.println("The priority queue is : ");
 		priorityQueue.printQueue();
 		
+		System.out.println("\nThe maximum priority job is : " + priorityQueue.peek().getJobName());
+		
+		System.out.println("\nThe priority queue after polling is : ");
+		priorityQueue.poll();
+		priorityQueue.printQueue();
+		
 		System.out.println("\nThe priority queue after some deletions is : ");
 		priorityQueue.dequeue();
 		priorityQueue.dequeue();

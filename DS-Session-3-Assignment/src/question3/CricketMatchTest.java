@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * This class tests the methods of CricketMatch class
- * @author Jugal
- * Dated 08/03/2019
- */
+* This class tests the methods of CricketMatch class
+* @author Jugal
+* Dated 08/03/2019
+*/
 public class CricketMatchTest {
 	
 	@Test
@@ -29,6 +29,7 @@ public class CricketMatchTest {
 		List<Bowler> bowlersOrder = match.playMatch();
 		assertEquals("Bhumrah", bowlersOrder.get(0).getBowlerName());
 		assertEquals("Shami", bowlersOrder.get(2).getBowlerName());
+		assertEquals("Chahal", bowlersOrder.get(3).getBowlerName());
 	}
 	
 	@Test
@@ -48,6 +49,7 @@ public class CricketMatchTest {
 		
 		assertEquals("Bhuvneshwar", bowlersOrder.get(0).getBowlerName());
 		assertEquals("Bhumrah", bowlersOrder.get(1).getBowlerName());
+		assertEquals("Chahal", bowlersOrder.get(3).getBowlerName());
 	}
 
 }

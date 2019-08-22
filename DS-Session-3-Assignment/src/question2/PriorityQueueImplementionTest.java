@@ -59,4 +59,15 @@ public class PriorityQueueImplementionTest {
 		priorityQueue.enqueue(new Job("Job 11", 15));
 	}
 
+	@Test
+	public void testPeek()
+	{
+		assertEquals("Job 6", priorityQueue.peek().getJobName());
+	}
+	
+	@Test
+	public void testPoll()
+	{
+		assertEquals("Job 6", priorityQueue.poll().getJobName());
+	}
 }

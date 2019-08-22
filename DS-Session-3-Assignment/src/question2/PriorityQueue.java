@@ -30,4 +30,18 @@ public interface PriorityQueue {
 	 * @return {boolean}
 	 */
 	public boolean isFull() ;
+	
+	/**
+	 * This method polls an element from the queue
+	 * Polls means extracting the maximum priority element from the queue
+	 * @return {Job} maximum priority job
+	 */
+	public Job poll();
+	
+	/**
+	 * This method peeks an element from the queue
+	 * Polls means displays the maximum priority element from the queue
+	 * @return {Job} maximum priority job
+	 */
+	public Job peek();
 }

@@ -18,11 +18,11 @@ class Validation
     {
         // Validating Contact Number
         var count=0;
-		var filterContact = new RegExp('([a-zA-Z!@#$%^&*()_+])');
-		if(!(contact.length <= 10 && contact.length >= 8) ) {
-			this.errorDescription('required_e_contact',"Insert Number Between 8 to 10");
+		var filterContact = new RegExp('\\d');
+		if(contact.length < 10) {
+			this.errorDescription('required_e_contact',"Contact Number should be 10 Numbers");
 			count++;
-		}else if(filterContact.test(contact)) {
+		}else if(!filterContact.test(contact)) {
 			this.errorDescription('required_e_contact',"Numeric values are only allowed");
 		} else {
 			this.removeDescription('required_e_contact',"");
@@ -32,10 +32,10 @@ class Validation
         //Validating user name
 		var filterName = new RegExp('\\d');
 		if(name.length <= 2) {
-			this.errorDescription('required_e_name',"Insert name greater then 2 word");
+			this.errorDescription('required_e_name',"Username Length cannot be less than two characters");
 			count++;
 		} else if(filterName.test(name)) {
-			this.errorDescription('required_e_name',"Numeric value not allowed");
+			this.errorDescription('required_e_name',"Numeric values are not allowed");
 			count++;
 		} else{
 			this.removeDescription('required_e_name',"");
@@ -58,7 +58,7 @@ class Validation
 			this.errorDescription('required_e_pass' ,"Atleast 8 char required");
 			count++;
 		} else if (!filterPassword.test(password)) {
-			this.errorDescription('required_e_pass' ,"Insert Valid password format eg Abc@123");
+			this.errorDescription('required_e_pass' ,"Password should have Numeric values, Special character, Upper and Lower case letters.");
 			count++;
 		} else if(password != confirmPassword) {
 			this.errorDescription('required_e_pass' ,"Both password should same");
@@ -90,37 +90,51 @@ class Validation
     static validateVehicleInformation(vehicleName , type , vehicleNumber , identity) {
         var count = 0;
         //validating vehicle name
+        var filterName = new RegExp("^[A-Za-z0-9 ]+$");
         if(vehicleName.length < 3)
         {
-			this.errorDescription('required_v_name',"Insert name greater then 2 word");
+		    this.errorDescription('required_v_name',"Insert name greater then 2 word");
+		    count++;
+        } 
+        else if(!filterName.test(vehicleName)) {
+			this.errorDescription('required_v_name',"Special characters in vehicle name are not allowed");
 			count++;
-        } else 
-        {
-			this.removeDescription('required_v_name',"");
-			count--;
 		}
+        else 
+        {
+		    this.removeDescription('required_v_name'," ");
+		    count--;
+	    }
 
         //validating vehicle type
-		if(type == "none") {
-			this.errorDescription('required_v_type',"Select Type Of Your Vehicle");
-			count++;
-		} else {
-			this.removeDescription('required_v_type',"");
-			count--;
-		}
+	    if(type == "none") {
+		    this.errorDescription('required_v_type',"Select Type Of Your Vehicle");
+		    count++;
+	    } else {
+		    this.removeDescription('required_v_type',"");
+		    count--;
+	    }
 
         //validating vehicle number
-		if(vehicleNumber.length < 4) {
-			this.errorDescription('required_v_number',"Vehicle Number required");
+        var filterNumber = new RegExp("^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$");
+		if(vehicleNumber.length < 12) {
+			this.errorDescription('required_v_number',"Vehicle Number cannot be less than 12 characters");
 			count++;
-		} else {
+        } 
+        else if(!filterNumber.test(vehicleNumber))
+        {
+            alert(true);
+            this.errorDescription('required_v_number',"Vehicle Number is Invalid. Vehicle number should be like RJ27 SW 0000");
+			count++;
+        }
+        else {
 			this.removeDescription('required_v_number',"");
 			count--;
         }
         
         //validating vehicle identity(description)
 		if(identity.length <= 10) {
-			this.errorDescription('required_v_detail',"Identity filled is required");
+			this.errorDescription('required_v_detail',"Identity filled with characters greater 10 is required");
 			count++;
 		} else {
 			this.removeDescription('required_v_detail',"");
@@ -188,7 +202,7 @@ function registerVehicle()
     var  vehicleName = document.getElementById("vehicle_name").value;
 	var  type = document.getElementById("vehicle_type").value;
 	var  vehicleNumber = document.getElementById("vehicle_number").value;
-	var  vehicleDetail = document.getElementById("vehicle_details").value;
+    var  vehicleDetail = document.getElementById("vehicle_details").value;
 	var count = Validation.validateVehicleInformation(vehicleName , type , vehicleNumber , vehicleDetail);
     if(count == -4)
     {
@@ -241,41 +255,41 @@ function displayPlan()
         case "USD" :
                 if(selectedVehicleType == "Cycle")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForCycle*0.014).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForCycle*0.014).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForCycle*0.014).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "$ "  + (dailyPriceForCycle*0.014).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "$ " + (monthlyPriceForCycle*0.014).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "$ " + (yearlyPriceForCycle*0.014).toFixed(2) + " for Yearly";
                 }
                 else if(selectedVehicleType == "Motor Cycle")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForMotorCycle*0.014).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForMotorCycle*0.014).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForMotorCycle*0.014).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "$ "  + (dailyPriceForMotorCycle*0.014).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "$ " + (monthlyPriceForMotorCycle*0.014).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "$ " + (yearlyPriceForMotorCycle*0.014).toFixed(2) + " for Yearly";
                 }
                 else if(selectedVehicleType == "Four Wheelers")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForFourWheeler*0.014).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForFourWheeler*0.014).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForFourWheeler*0.014).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "$ "  + (dailyPriceForFourWheeler*0.014).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "$ " + (monthlyPriceForFourWheeler*0.014).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "$ " + (yearlyPriceForFourWheeler*0.014).toFixed(2) + " for Yearly";
                 }
             break;
         case "YEN" :
                 if(selectedVehicleType == "Cycle")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForCycle*1.47).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForCycle*1.47).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForCycle*1.47).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "¥ "  + (dailyPriceForCycle*1.47).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "¥ " + (monthlyPriceForCycle*1.47).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "¥ " + (yearlyPriceForCycle*1.47).toFixed(2) + " for Yearly";
                 }
                 else if(selectedVehicleType == "Motor Cycle")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForMotorCycle*1.47).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForMotorCycle*1.47).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForMotorCycle*1.47).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "¥ "  + (dailyPriceForMotorCycle*1.47).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "¥ " + (monthlyPriceForMotorCycle*1.47).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "¥ " + (yearlyPriceForMotorCycle*1.47).toFixed(2) + " for Yearly";
                 }
                 else if(selectedVehicleType == "Four Wheelers")
                 {
-                    document.getElementById("vehicle_price_field_daily").innerHTML = "Rs. "  + (dailyPriceForFourWheeler*1.47).toFixed(2) + " for Daily";
-                    document.getElementById("vehicle_price_field_monthly").innerHTML = "Rs. " + (monthlyPriceForFourWheeler*1.47).toFixed(2) + " for Monthly";
-                    document.getElementById("vehicle_price_field_yearly").innerHTML = "Rs. " + (yearlyPriceForFourWheeler*1.47).toFixed(2) + " for Yearly";
+                    document.getElementById("vehicle_price_field_daily").innerHTML = "¥ "  + (dailyPriceForFourWheeler*1.47).toFixed(2) + " for Daily";
+                    document.getElementById("vehicle_price_field_monthly").innerHTML = "¥ " + (monthlyPriceForFourWheeler*1.47).toFixed(2) + " for Monthly";
+                    document.getElementById("vehicle_price_field_yearly").innerHTML = "¥ " + (yearlyPriceForFourWheeler*1.47).toFixed(2) + " for Yearly";
                 }
             break
     }

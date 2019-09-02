@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EAD-Session-1-Assignment</title>
+
+    <script src="functions.js"></script>
+</head>
+<body>
+    <h1 align="center">
+        Metacube Parking System
+    </h1>
+
+    <div id="master_div" align="center">
+            <div id="employee_registration">
+                    <h2>
+                        Employee Registration Form
+                    </h2>
+                    <form action="" method="POST">
+                        <input type="text" placeholder="Enter Name" size="60%" id="employee_name"><br /> <span id="required_e_name"></span> <br /><br />
+                        <span>Gender : </span>
+                        <label>
+                            <input type="radio" name = "gender" id="employee_gender_male" value="Male">Male
+                        </label>
+                        <label>
+                            <input type="radio" name = "gender" id="employee_gender_female" value="Female">Female
+                        </label>
+                        <br /> <span id="required_e_gender" color="red"></span>
+                        <br /><br />
+                        <input type="email" placeholder="Enter Email Id" size="60%" id="employee_email"><br /> <span id="required_e_email"></span><br /><br />
+                        <input type="password" placeholder="Enter Password" size="60%" id="employee_password"><br /> <span id="required_e_pass" ></span><br /><br />
+                        <input type="password" placeholder="Conform Password" size="60%" id="employee_conform_password"><br /> <span id="required_e_cpass" ></span><br /><br />
+                        <input type="text" placeholder="Enter Contact Number" size="60%" id="employee_contact"><br /> <span id="required_e_contact" ></span><br /><br />
+                        <input type="button" value="Register" id="employee_register_button" onclick="registerUser()">
+                        <br /><br />
+                    </form>
+                </div>
+            
+                <div id="vehicle_registration">
+                    <h2>
+                        Vehicle Registration Form
+                    </h2>
+                    <form action="" method="POST">
+                        <input type="text" placeholder="Enter Vehicle Name" size="60%" id="vehicle_name"> <br /> <span id="required_v_name"></span><br /><br />
+                            <span>Vehicle Type : </span>
+                            <select id="vehicle_type">
+                                <option disabled>---</option>
+                                <option>Cycle</option>
+                                <option>Motor Cycle</option>
+                                <option>Four Wheelers</option>
+                            </select>
+                            <br /> <span id="required_v_type" color="red"></span>
+                            <br /><br />
+                            <input type="text" placeholder="Enter Vehicle Number" size="60%" id="vehicle_number"><br /> <span id="required_v_number"></span><br /><br />
+                            <input type="text" placeholder="Enter Employee Id" size="60%" id="employee_id" readonly><br /> <span id="required_e_id"></span><br /><br />
+                            <textarea rows="4" cols="61" placeholder="Enter Vehicle Details" id="vehicle_details"></textarea> <br /> <span id="required_v_detail" ></span>
+                            <br /><br />
+                            <input type="button" value="Register" id="vehicle_register_button" onclick="registerVehicle()">
+                            <br /><br />
+                    </form>
+                </div>
+            
+                <div id="price_plan">
+                    
+                    <p id="vehicle_type_field"></p>
+                    <p id="vehicle_price_field_daily"></p>
+                    <p id="vehicle_price_field_monthly"></p>
+                    <p id="vehicle_price_field_yearly"></p>
+                    
+                    <p><strong>Select Your plan :</strong> </p>
+                    <label id="plan_id_1">
+                        <input type="radio" name="price_plan" id="plan_radio_1" value="Daily" checked>Daily
+                    </label>
+                    <label id="plan_id_2">
+                        <input type="radio" name="price_plan" id="plan_radio_2" value="Monthly">Monthly
+                    </label>
+                    <label id="plan_id_3">
+                        <input type="radio" name="price_plan" id="plan_radio_3" value="Yearly">Yearly
+                    </label><br /><br />    
+                </div>
+            
+                <div id="option_selection">   
+                    Change Currency : 
+                    <select id="currency_type" onchange="displayPlan()">
+                        <option disabled>---</option>
+                        <option>INR</option>
+                        <option>USD</option>
+                        <option>YEN</option>
+                    </select>
+                    <br /><br />
+                    <input type="button" value="Check" onclick="getPlanPrice()">
+                    <br /><br />
+                    <div id="pass_div">
+
+                    </div>
+                    <br /><br />
+                    <input type="button" value="Get Pass" onclick="getPass()">
+                </div>
+
+    </div>
+
+</body>
+</html>

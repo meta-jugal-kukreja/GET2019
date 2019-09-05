@@ -2,7 +2,11 @@ package com.metacube.assignment.factory;
 
 import java.sql.SQLException;
 
+import com.metacube.assignment.controller.ProductController;
+import com.metacube.assignment.dao.BaseDao;
+import com.metacube.assignment.dao.InMemoryDao;
 import com.metacube.assignment.dao.ProductDao;
+import com.metacube.assignment.dao.SQLDao;
 import com.metacube.assignment.enums.DBType;
 import com.metacube.assignment.facade.ProductFacade;
 import com.metacube.assignment.model.Product;
@@ -10,6 +14,11 @@ import com.metacube.assignment.model.ShoppingCart;
 
 public class Factory {
 
+	public static ProductController createProductController(){
+		ProductController productController =new ProductController();
+        
+        return productController;
+    }
 	/**
      * This method creates and returns Product type Object
      * @param productCode is the code of the product
@@ -43,15 +52,30 @@ public class Factory {
     }
     
     /**
-     * This method creates and returns ProductDao type Object
-     * @return {ProductDao} ProductDao Object
+     * This method creates and returns BaseDao<Product> type Object
+     * @return {BaseDao<Product>} ProductDao Object
      */
-    public static ProductDao createProductDao(DBType dbType){
+    public static BaseDao<Product> createBaseDao(DBType dbType){
         try {
-			return new ProductDao(dbType);
+        	if(dbType == DBType.IN_MEMORY)
+    		{
+    			return new InMemoryDao();
+    		}
+    		else
+    		{
+    			return new SQLDao();
+    		}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
     }
+
+    /**
+     * This method creates and returns ProductDao type Object
+     * @return {ProductDao} ProductDao Object
+     */
+	public static ProductDao createProductDao(DBType dbType) {
+		return new ProductDao(dbType);
+	}
 }

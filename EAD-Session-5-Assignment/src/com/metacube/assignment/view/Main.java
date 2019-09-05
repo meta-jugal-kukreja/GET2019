@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.metacube.assignment.controller.ProductController;
 import com.metacube.assignment.enums.Status;
+import com.metacube.assignment.factory.Factory;
 import com.metacube.assignment.model.Product;
 import com.metacube.assignment.model.ShoppingCart;
 
@@ -17,7 +18,7 @@ import com.metacube.assignment.model.ShoppingCart;
 public class Main {
 
 	static Scanner inputScanner = new Scanner(System.in);
-	static ProductController productController = new ProductController();
+	static ProductController productController = Factory.createProductController();
 	
 	public static void main(String[] args) {
 		
@@ -41,6 +42,11 @@ public class Main {
 						productName = inputScanner.nextLine();
 						System.out.print("Enter product quantity : ");
 						productQuantity = inputScanner.nextLine();
+						if(Integer.parseInt(productQuantity) <= 0)
+						{
+							System.out.println("Enter quantity greater than 0");
+							continue Loop;
+						}
 						productId = productController.findProductIdByName(productName);
 						try
 						{
@@ -86,13 +92,25 @@ public class Main {
 						System.out.print("Enter the new quantity : ");
 						productQuantity = inputScanner.nextLine();
 						productId = productController.findProductIdByName(productName);
+						if(Integer.parseInt(productQuantity) <= 0)
+						{
+							System.out.println("Enter quantity greater than 0");
+							continue Loop;
+						}
 						if(Integer.parseInt(productQuantity) == 0)
 						{
 							status = productController.deleteProductFromCart(userId, productId);
 						}
 						else
 						{
-							status = productController.updateCartItems(userId, productId, Integer.parseInt(productQuantity));
+							try
+							{
+								status = productController.updateCartItems(userId, productId, Integer.parseInt(productQuantity));
+							}
+							catch (NumberFormatException e) {
+								System.out.println("\nEnter the quantity in number only.");
+								continue Loop;
+							}
 						}
 						if(status == Status.UPDATED)
 						{
@@ -119,6 +137,8 @@ public class Main {
 						}
 						break;
 						
+					case "5" :
+						break;
 						default : 
 							System.out.println("Please Enter a valid choice");
 				}

@@ -1,10 +1,9 @@
 package com.metacube.assignment.dao;
 
-import java.sql.SQLException;
 import java.util.List;
-
 import com.metacube.assignment.enums.DBType;
 import com.metacube.assignment.enums.Status;
+import com.metacube.assignment.factory.Factory;
 import com.metacube.assignment.model.Product;
 import com.metacube.assignment.model.ShoppingCart;
 
@@ -12,16 +11,9 @@ public class ProductDao implements BaseDao<Product> {
 	
 	BaseDao<Product> baseDao;
 	
-	public ProductDao(DBType dbType) throws ClassNotFoundException, SQLException
+	public ProductDao(DBType dbType)
 	{
-		if(dbType == DBType.IN_MEMORY)
-		{
-			baseDao = new InMemoryDao();
-		}
-		else
-		{
-			baseDao = new SQLDao();
-		}
+		baseDao = Factory.createBaseDao(dbType);
 	}
 
 	@Override

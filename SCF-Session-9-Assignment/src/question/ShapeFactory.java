@@ -54,7 +54,7 @@ public class ShapeFactory {
 			break;
 			
 		default:
-			throw new AssertionError();
+			System.out.println("Incorrect shape type. Please Enter again");
 		}
 		
 		return s;

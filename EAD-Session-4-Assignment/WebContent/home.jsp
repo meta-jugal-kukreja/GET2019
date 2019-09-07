@@ -13,15 +13,16 @@
 	</div>
 	<div align="center">
 		<form action="UserDetailServlet" method="post">
-			<input name="emp_id" type="hidden"
-				value="<%=request.getAttribute("emp_id")%>">
+			<input name="email" type="hidden"
+				value="<%=session.getAttribute("email")%>">
 			 <input
 				id="userDetail" type="submit" name="userDetail"
 				value="Show User Profile">
 		</form>
+		<br>
 		<form action="FriendsListServlet" method="post">
-			<input name="emp_id" type="hidden"
-				value="<%=request.getAttribute("emp_id")%>"> <input
+			<input name="email" type="hidden"
+				value="<%=session.getAttribute("email")%>"> <input
 				id="friends" type="submit" name="friends" value="Friends">
 		</form>
 	</div>

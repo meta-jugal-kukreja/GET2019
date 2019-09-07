@@ -7,11 +7,17 @@
 <title>Friend List</title>
 </head>
 <body align="center">
+	<div align="right">
+		<form action="LogOutServlet" method="post">
+			<input type="submit" name="log_out" value="Log Out">
+		</form>
+	</div>
 	<table align="center" cellpadding="10%" style="text-align: left"
 		border="1px">
 		<tr>
-			<th>Employee Id</th>
+			<th>Employee Email</th>
 			<th>Name</th>
+			<th>Action</th>
 		</tr>
 		<%
 			ResultSet resultSet = (ResultSet) request
@@ -20,8 +26,8 @@
 		%>
 		<tr>
 			<form action="FriendDetailServlet" method="post">
-			<td><input name="emp_id" type="text" size="1%"
-				value="<%=resultSet.getInt(1)%>" readonly></td>
+			<td><input name="email" type="text" size="25%"
+				value="<%=resultSet.getString(1)%>" readonly></td>
 			<td><%=resultSet.getString(2)%></td>
 			<td><input type="submit" value="View Profile"></td>
 			</form>

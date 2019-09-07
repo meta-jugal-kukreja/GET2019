@@ -26,19 +26,19 @@ public class UserDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			PreparedStatement statement= MySQLCon.getConnection().prepareStatement(Queries.getQueryForEmpDetail());
-			statement.setInt(1, Integer.parseInt(request.getParameter("emp_id")));
+			statement.setString(1, request.getParameter("email"));
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
-			request.setAttribute("emp_id", resultSet.getInt(1));
-			request.setAttribute("emp_name", resultSet.getString(2));
-			request.setAttribute("gender", resultSet.getString(3));
-			request.setAttribute("email", resultSet.getString(4));
-			request.setAttribute("contact_number", resultSet.getString(5));
-			request.setAttribute("organization", resultSet.getString(6));
-			request.setAttribute("vehicle_name", resultSet.getString(7));
-			request.setAttribute("vehicle_type", resultSet.getString(8));
-			request.setAttribute("vehicle_number", resultSet.getString(9));
-			request.setAttribute("identification", resultSet.getString(10));
+			request.setAttribute("emp_name", resultSet.getString(1));
+			request.setAttribute("gender", resultSet.getString(2));
+			request.setAttribute("email", resultSet.getString(3));
+			request.setAttribute("contact_number", resultSet.getString(4));
+			request.setAttribute("organization", resultSet.getString(5));
+			request.setAttribute("vehicle_name", resultSet.getString(6));
+			request.setAttribute("vehicle_type", resultSet.getString(7));
+			request.setAttribute("vehicle_number", resultSet.getString(8));
+			request.setAttribute("identification", resultSet.getString(9));
+			request.setAttribute("pass_number", resultSet.getInt(10));
 			request.setAttribute("price", resultSet.getDouble(11));
 			getServletContext().getRequestDispatcher("/user_detail.jsp").include(request, response);
 		}catch(SQLException e){

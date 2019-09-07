@@ -4,13 +4,13 @@
 <html>
 <head>
 <title>Add Vehicle</title>
-<script src="allFunctionJs.js">	
+<script src="functions.js">	
 </script>
 </head>
 <body align="center">
 
+	<h2>Add Your Vehicle</h2>
 	<form action="AddVehicleServlet" method="post" onsubmit="return vehicleSelectionValidation(this)">
-		<h1>Add Your Vehicle</h1>
 		<table align="center" style="text-align: left" cellpadding="10">
 			<tr>
 				<td><label>Vehicle Name</label></td>
@@ -29,12 +29,12 @@
 			<tr>
 				<td><label>Vehicle Number</label></td>
 				<td><input name="vehicleNumber" type="text"
-					placeholder="Vehicle Number" size="60%" required ></td>
+					placeholder="Vehicle Number" size="60%" pattern="^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$" required ></td>
 			</tr>
 			<tr>
-				<td><label>Employee ID</label></td>
-				<td><input name="empl_Id" type="text" size="60%"
-					value="<%=session.getAttribute("emp_id")%>" readonly ></td>
+				<td><label>Employee Email</label></td>
+				<td><input name="email" type="text" size="60%"
+					value="<%=session.getAttribute("email")%>" readonly ></td>
 			</tr>
 			<tr>
 				<td><label>Identification</label></td>

@@ -26,8 +26,8 @@ public class FriendsListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			PreparedStatement statement= MySQLCon.getConnection().prepareStatement(Queries.getQueryForFriendsList());
-			statement.setString(1, request.getParameter("emp_id"));
-			statement.setString(2, request.getParameter("emp_id"));
+			statement.setString(1, request.getParameter("email"));
+			statement.setString(2, request.getParameter("email"));
 			ResultSet resultSet = statement.executeQuery();
 	        request.setAttribute("friendList", resultSet);
 	        getServletContext().getRequestDispatcher("/friend_list.jsp").include(request, response);

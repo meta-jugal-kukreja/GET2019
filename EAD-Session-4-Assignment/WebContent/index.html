@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Metacube Parking</title>
-<script src="allFunctionJs.js">
-</script>
+<title>Parking System</title>
+<script src="functions.js"></script>
 </head>
 <body align="center">
+	
+	<h1>Welcome To Parking System</h1>
 	<div id="empRegistrationForm">
-		<form action="RegistrationServlet" method="post"
-			onsubmit="return validation(this)">
-			<h1>Welcome To Metacube Parking</h1>
-			<h2>Register Here</h2>
+	<h2>Employee Registration Form</h2>
+		<form name = "registrationForm" action="RegistrationServlet"  method="post" onsubmit="return validation(this)">
 			<table align="center" style="text-align: left" cellpadding="10">
 				<tr>
 					<td><label>Full Name</label></td>
@@ -28,11 +27,11 @@
 				<tr>
 					<td><label>Email</label></td>
 					<td><input name="email" type="email" placeholder="Email"
-						size="60%" required></td>
+						size="60%" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" required></td>
 				</tr>
 				<tr>
 					<td><label>Password</label></td>
-					<td><input name="password" type="password"
+					<td><input id="password"  name="password" type="password"
 						placeholder="Password" size="60%"
 						pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}" required></td>
 				</tr>

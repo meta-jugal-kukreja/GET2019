@@ -4,30 +4,30 @@
 <html>
 <head>
 <title>Pass Detail</title>
-<script src="allFunctionJs.js">	
+<script src="functions.js">	
 </script>
 </head>
 <body align="center">
 <form name="passesPrice" action="PassDetailServlet" method="post" onsubmit="return currencySelectionValidation(this)">
-        <h1>Select Plan</h1>
-        <input name="emp_id" type="hidden" value="<%=request.getAttribute("emp_id")%>">
+        <h2>Select Plan</h2>
+        <input name="email" type="hidden" value="<%=session.getAttribute("email")%>">
         <input id="selectedVehicle" name="selectedVehicle" type="hidden" value="<%=request.getAttribute("vehicleType")%>">
-        <table id="priceTable" name="priceTable" border="1px" align="center">
+        <table id="priceTable" name="priceTable" border="1px" align="center" style="width:15%">
             <tr>
                 <th>Plan</th>
-                <th>Prices</th>
+                <th width="50%">Prices</th>
             </tr>
             <tr>
                 <td>Daily</td>
-                <td></td>
+                <td width="50%"></td>
             </tr>
             <tr>
                 <td>Monthly</td>
-                <td></td>
+                <td width="50%"></td>
             </tr>
             <tr>
                 <td>Yearly</td>
-                <td></td>
+                <td width="50%"></td>
             </tr>
         </table><br><br>
 

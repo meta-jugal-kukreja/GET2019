@@ -29,16 +29,13 @@ public class LogInServlet extends HttpServlet {
 		try {
 			PreparedStatement statement= MySQLCon.getConnection().prepareStatement(Queries.getQueryForLogIn());
 			statement.setString(1, request.getParameter("email"));
+			statement.setString(2, request.getParameter("password"));
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
-			if(request.getParameter("password").equals(resultSet.getString(1))){
-				statement = MySQLCon.getConnection().prepareStatement(Queries.getEmpId());
-				statement.setString(1, request.getParameter("email"));
-				ResultSet empId = statement.executeQuery();
-				empId.next();
-				request.setAttribute("emp_id", empId.getInt(1));
+			if(request.getParameter("email").equals(resultSet.getString(1))){
+				request.setAttribute("employeeEmail", request.getParameter("email"));
 				HttpSession session = request.getSession();
-				session.setAttribute("emp_id",empId.getInt(1));
+				session.setAttribute("email",request.getParameter("email"));
 				getServletContext().getRequestDispatcher("/home.jsp").include(request, response);
 			}else{
 				PrintWriter out = response.getWriter();
@@ -46,8 +43,7 @@ public class LogInServlet extends HttpServlet {
 				out.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

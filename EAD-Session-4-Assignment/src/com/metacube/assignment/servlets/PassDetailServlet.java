@@ -3,6 +3,7 @@ package com.metacube.assignment.servlets;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,24 +24,24 @@ public class PassDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DecimalFormat df = new DecimalFormat("##.00");
 		try {
 			PreparedStatement statement= MySQLCon.getConnection().prepareStatement(Queries.getQueryForAddPass());
-			statement.setInt(1, Integer.parseInt(request.getParameter("emp_id")));
+			statement.setString(1, request.getParameter("email"));
 			switch (request.getParameter("typeOfCurrency")) {
 				case "USD" :
 					statement.setString(2, request.getParameter("final_price"));
 					break;
 				case "INR" :
 					double INRprice=0.014*(Double.parseDouble(request.getParameter("final_price")));
-					statement.setString(2, INRprice+"");
+					statement.setString(2, df.format(INRprice)+"");
 					break;
 				case "YEN" :
 					double YENprice=0.0094*(Double.parseDouble(request.getParameter("final_price")));
-					statement.setString(2, YENprice+"");
+					statement.setString(2, df.format(YENprice)+"");
 					break;
 			}
 			statement.executeUpdate();
-			request.setAttribute("emp_id", request.getParameter("emp_id"));
 			getServletContext().getRequestDispatcher("/home.jsp").include(request, response);
 		}catch(SQLException e){
 			e.printStackTrace();

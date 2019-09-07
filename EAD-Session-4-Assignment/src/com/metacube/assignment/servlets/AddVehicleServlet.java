@@ -29,11 +29,10 @@ public class AddVehicleServlet extends HttpServlet {
 			statement.setString(1, request.getParameter("vehicle_name"));
 			statement.setString(2, request.getParameter("typeOfVehicle"));
 			statement.setString(3, request.getParameter("vehicleNumber"));
-			statement.setString(4, request.getParameter("empl_Id"));
+			statement.setString(4, request.getParameter("email"));
 			statement.setString(5, request.getParameter("vehicleIdentification"));
 			statement.executeUpdate();
 			request.setAttribute("vehicleType", request.getParameter("typeOfVehicle"));
-			request.setAttribute("emp_id", request.getParameter("empl_Id"));
 			getServletContext().getRequestDispatcher("/pass_detail.jsp").include(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -4,13 +4,10 @@
 <html>
 <head>
 <title>User Profile</title>
+<script type="functions.js"></script>
 </head>
-<body align="center">
+<body>
 	<table align="center" cellpadding = "10%" style="text-align:left" border="1px">
-		<tr>
-			<td>Employee Id</td>
-			<td><%=request.getAttribute("emp_id")%></td>
-		</tr>
 		<tr>
 			<td>Name</td>
 			<td><%=request.getAttribute("emp_name")%></td>
@@ -21,7 +18,7 @@
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td><%=request.getAttribute("email")%></td>
+			<td><%=session.getAttribute("email")%></td>
 		</tr>
 		<tr>
 			<td>Contact Number</td>
@@ -48,10 +45,21 @@
 			<td><%=request.getAttribute("identification")%></td>
 		</tr>
 		<tr>
+			<td>Pass Number</td>
+			<td><%=request.getAttribute("pass_number")%></td>
+		</tr>
+		<tr>
 			<td>Pass Price</td>
-			<td><%=request.getAttribute("price")%></td>
+			<td>$<%=request.getAttribute("price")%></td>
 		</tr>
 	</table>
-
+	
+	<br>
+	<br>
+	<div align="center">
+		<form action="home.jsp" method="post">
+			<input type="submit" name="log_out" value="Home">
+		</form>
+	</div>
 </body>
 </html>

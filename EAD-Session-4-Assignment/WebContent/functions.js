@@ -1,6 +1,6 @@
 function passwordMatching(form) {
 	var password = form.password.value;
-	var confirmPassword = form.confirmPassword.value;
+	var confirmPassword = form.confirm_password.value;
 	if (password != confirmPassword) {
 		alert("password does not match");
 		return false;
@@ -17,8 +17,8 @@ function validation(form) {
 
 function organizationSelectionValidation(form) {
 	var selectedOrganization = form.organization.value;
-	if (selectedOrganization == null) {
-		alert("please select vehicle type");
+	if (selectedOrganization == "Select Organization") {
+		alert("Please Select Organization Type");
 		return false;
 	}
 	return true;
@@ -44,6 +44,7 @@ function currencySelectionValidation(form) {
     for (i = 0; i < plans.length; i++) {
         if (plans[i].checked) {
             checkedPlan = plans[i].value;
+            break;
         }
     }
     var table = document.getElementById("priceTable");
@@ -87,9 +88,9 @@ function changeCurrency() {
 function convertCurrency(INRPrice) { 
     var currencyType = document.getElementById("typeOfCurrency").value;
     if (currencyType == "USD") {
-        return 0.014 * INRPrice;
+        return (0.014 * INRPrice).toFixed(2);
     } else if (currencyType == "YEN") {
-        return 1.47 * INRPrice;
+        return (1.47 * INRPrice).toFixed(2);
     } else {
         return INRPrice;
     }

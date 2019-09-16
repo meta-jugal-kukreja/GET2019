@@ -26,6 +26,7 @@ public class StudentDAO {
 		
 	}
 
+	@Autowired
 	public void setTemplate(HibernateTemplate template) {
 		this.template = template;
 	}
@@ -36,16 +37,7 @@ public class StudentDAO {
 	 * @return {int} number of rows added
 	 */
 	public int add(Student student){
-		System.out.println(student.getEmail());
-		try
-		{
-			return (int) template.save(student);
-		}
-		catch(Exception  e)
-		{
-			System.out.println(e.getMessage());
-			return -1;
-		}
+		return (int) template.save(student);
 	}
 
 	/**

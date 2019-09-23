@@ -74,7 +74,7 @@ public class AppController {
 		}
 		else
 		{
-			if(studentDao.StudentExists(student.getEmail()).size()!=0)
+			if(studentDao.isStudentExists(student.getEmail()).size()!=0)
 			{
 				attribute.addFlashAttribute("message", "Student already exist");
 			}

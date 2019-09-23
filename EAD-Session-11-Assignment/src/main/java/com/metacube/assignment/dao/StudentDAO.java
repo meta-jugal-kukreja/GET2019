@@ -48,7 +48,7 @@ public class StudentDAO {
 		return template.loadAll(Student.class);
 	}
 	
-	public List<Student> StudentExists(String email) {
+	public List<Student> isStudentExists(String email) {
 		Student student = new Student();
 	    student.setEmail(email);
 

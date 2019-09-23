@@ -24,7 +24,6 @@ public class Employee {
 			String password, String contactNumber, String organization,
 			String vehicleName, String vehicleNumber, String vehicleType,
 			String vehicleIdentification, String passNumber, String passPrice) {
-		super();
 		this.fullName = fullName;
 		this.gender = gender;
 		this.email = email;

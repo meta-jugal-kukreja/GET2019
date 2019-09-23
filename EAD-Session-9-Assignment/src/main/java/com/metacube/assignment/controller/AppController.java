@@ -25,6 +25,8 @@ import com.metacube.assignment.model.Employee;
  */
 @Controller
 public class AppController {
+	
+	List<Employee> employeeList = new ArrayList<>();
 
 	// show employee registration form
 	@GetMapping("/employeeRegistration")
@@ -99,7 +101,7 @@ public class AppController {
 	// show friends list
 	@GetMapping("/home/friendsList")
 	public String showFriendsList(Model model) {
-		List<Employee> employeeList = new ArrayList<>();
+		employeeList = null;
 		employeeList.add(new Employee("Jugal Kukreja", "Male",
 				"jugal@metacube.com", "Jugal@1997", "97829196918", "Metacube",
 				"CB Twister", "RJ 27 SW 0977", "Motor Cycle",

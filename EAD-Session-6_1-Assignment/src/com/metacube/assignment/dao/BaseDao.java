@@ -31,21 +31,7 @@ public interface BaseDao<T> {
 	* @param query is the query string
 	 * @return {Status} status
 	 */
-	public Status deleteItemFromInventory(String query);
-
-	/**
-	 * Method to update data 
-	 * @param query is the query string
-	 * @return {Status} status
-	 */
-	public Status updateAnItemFromInventory(String updateInventoryQuery);
-	
-	/**
-	 * Method to update data 
-	 * @param query is the query string
-	 * @return {Status} status
-	 */
-	public Status deleteAllItemsFromInventory(String query);
+	public Status performUpdate(String query);
 
 	/**
 	 * Method to get an item from the inventory
@@ -53,7 +39,4 @@ public interface BaseDao<T> {
 	 * @return {Inventory} inventory item
 	 */
 	public Inventory getAnItemFromInventory(String query);
-
-	
-
 }

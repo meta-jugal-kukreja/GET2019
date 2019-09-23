@@ -11,6 +11,11 @@ import com.metacube.assignment.database.ConnectionClass;
 import com.metacube.assignment.enums.Status;
 import com.metacube.assignment.model.Inventory;
 
+/**
+ * This class implements the methods of the BaseDao Interface to perform operations on the database.
+ * @author Jugal
+ * Dated 09/04/2019
+ */
 public class SQLDAO implements BaseDao<Inventory> {
 
 	private Connection connection;
@@ -43,6 +48,7 @@ public class SQLDAO implements BaseDao<Inventory> {
 
 	@Override
 	public Status insertItemToInventory(String query) {
+		Status status;
 		try
 		{
 			PreparedStatement statement = connection.prepareStatement(query);
@@ -50,22 +56,24 @@ public class SQLDAO implements BaseDao<Inventory> {
 			if(statement.executeUpdate() > 0)
 			{
 				connection.commit();
-				return Status.INSERTED;
+				status = Status.INSERTED;
 			}
 			else
 			{
-				return Status.INVALID;
+				status = Status.INVALID;
 			}
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e.getMessage());
-			return Status.ERROR;
+			status = Status.ERROR;
 		}
+		return status;
 	}
 
 	@Override
-	public Status deleteItemFromInventory(String query) {
+	public Status performUpdate(String query) {
+		Status status;
 		try
 		{
 			PreparedStatement statement = connection.prepareStatement(query);
@@ -73,41 +81,19 @@ public class SQLDAO implements BaseDao<Inventory> {
 			if(statement.executeUpdate() > 0)
 			{
 				connection.commit();
-				return Status.UPDATED;
+				status = Status.UPDATED;
 			}
 			else
 			{
-				return Status.INVALID;
+				status = Status.INVALID;
 			}
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e.getMessage());
-			return Status.ERROR;
+			status = Status.ERROR;
 		}
-	}
-
-	@Override
-	public Status deleteAllItemsFromInventory(String query) {
-		try
-		{
-			PreparedStatement statement = connection.prepareStatement(query);
-			connection.setAutoCommit(false);
-			if(statement.executeUpdate() == 0)
-			{
-				connection.commit();
-				return Status.UPDATED;
-			}
-			else
-			{
-				return Status.INVALID;
-			}
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e.getMessage());
-			return Status.ERROR;
-		}
+		return status;
 	}
 
 	@Override
@@ -125,28 +111,4 @@ public class SQLDAO implements BaseDao<Inventory> {
 			return null;
 		}
 	}
-
-	@Override
-	public Status updateAnItemFromInventory(String query) {
-		try
-		{
-			PreparedStatement statement = connection.prepareStatement(query);
-			connection.setAutoCommit(false);
-			if(statement.executeUpdate() > 0)
-			{
-				connection.commit();
-				return Status.UPDATED;
-			}
-			else
-			{
-				return Status.INVALID;
-			}
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e.getMessage());
-			return Status.ERROR;
-		}
-	}
-
 }

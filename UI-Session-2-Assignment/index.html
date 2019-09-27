@@ -11,16 +11,16 @@
 </head>
 
 <body>
-    <!-- Div for nav bar -->
-    <div id="nav_bar">
-        <span><a href="#employee_registration">Add Employee</a></span> &nbsp; &nbsp;
-        <span><a href="#vehicle_registration">Add Vehicle</a></span> &nbsp; &nbsp;
-        <span><a href="#feedback_form">Give Feedback</a></span> &nbsp; &nbsp;
-        <span><a href="#price_details">Pricing</a></span>
-    </div>
+    <!-- nav bar -->
+    <ul>
+        <li><a href="#employee_registration">Add Employee</a></li>
+        <li><a href="#vehicle_registration">Add Vehicle</a></li>
+        <li><a href="#feedback_form">Give Feedback</a></li>
+        <li><a href="#price_details">Pricing</a></li>
+    </ul>
     <br>
     <!-- Div for heading and image -->
-    <div align="center" id="system_head">
+    <div id="system_head">
         <h1>Metacube Parking System</h1>
         <img src="images\parking.jpg" alt="Parking Image" width="500px">
     </div>
@@ -28,132 +28,94 @@
 
     <!-- Section for employee registration -->
     <button class="collapsible">Employee Registration Form</button>
-    <div class="content" id="employee_registration" align="center">
+    <div class="content" id="employee_registration">
         <h2>
             Employee Registration Form
         </h2>
         <form action="" method="POST">
-            <table cellpadding="10">
-                <tr>
-                    <td><label>Full Name</label></td>
-                    <td><input name="full_name" type="text" placeholder="Full Name" size="60%" pattern="[A-Za-z]*"
-                            required></td>
-                </tr>
-                <tr>
-                    <td><label>Gender</label></td>
-                    <td><label> <input type="radio" name="gender" value="M" required>Male
-                        </label> <label> <input type="radio" name="gender" value="F">Female
-                        </label></td>
-                    <td>
-                </tr>
-                <tr>
-                    <td><label>Email</label></td>
-                    <td><input name="email" type="email" placeholder="Email" size="60%"
-                            pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" required></td>
-                </tr>
-                <tr>
-                    <td><label>Password</label></td>
-                    <td><input id="password" name="password" type="password" placeholder="Password" size="60%"
-                            pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}" required></td>
-                </tr>
-                <tr>
-                    <td><label>Confirm password</label></td>
-                    <td><input name="confirm_password" type="password" placeholder="Confirm Password" size="60%"
-                            required></td>
-                </tr>
-                <tr>
-                    <td><label>Contact Number</label></td>
-                    <td><input name="contact" type="text" placeholder="Contact" size="60%" pattern="([0-9]){10}"
-                            required></td>
-                </tr>
-                <tr>
-                    <td><label>Organization</label></td>
-                    <td><select name="organization" required>
-                            <option disabled selected>Select Organization</option>
-                            <option>Metacube</option>
-                            <option>TCS</option>
-                            <option>Infosys</option>
-                            <option>Wipro</option>
-                        </select></td>
-                </tr>
 
-            </table><br>
+            <label for="full_name">Full Name</label>
+            <input name="full_name" type="text" placeholder="Full Name" size="60%" pattern="[A-Za-z]*" required>
+
+            <label for="gender">Gender</label>
+            <label> <input type="radio" name="gender" value="M" required>Male</label>
+            <label> <input type="radio" name="gender" value="F">Female</label>
+
+            <label for="email" style="display: block; margin-top:20px">Email</label>
+            <input name="email" type="email" placeholder="Email" size="60%" id="email"
+                pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" size="60%"
+                pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}" required>
+
+            <label for="confirm_password">Confirm password</label>
+            <input name="confirm_password" id="confirm_password" type="password" placeholder="Confirm Password"
+                size="60%" required>
+
+            <label for="contact">Contact Number</label>
+            <input name="contact" id="contact" type="text" placeholder="Contact" size="60%" pattern="([0-9]){10}"
+                required>
+
+            <label for="organization">Organization</label>
+            <select name="organization" id="organization" required>
+                <option disabled selected>Select Organization</option>
+                <option>Metacube</option>
+                <option>TCS</option>
+                <option>Infosys</option>
+                <option>Wipro</option>
+            </select>
+
             <input id="submitButton" name="submitButton" type="submit" value="Register">
-            <br><br>
         </form>
     </div>
     <br>
     <!-- Section for vehicle registration -->
     <button class="collapsible">Vehicle Registration Form</button>
-    <div class="content" id="vehicle_registration"  align="center">
+    <div class="content" id="vehicle_registration">
         <h2>
             Vehicle Registration Form
         </h2>
         <form action="" method="POST">
-            <table cellpadding="10">
-                <tr>
-                    <td><label>Vehicle Name</label></td>
-                    <td><input name="vehicle_name" type="text" placeholder="Vehicle Name" size="60%"
-                            pattern="[A-Z a-z]*" required></td>
-                </tr>
-                <tr>
-                    <td><label>Vehicle Type</label></td>
-                    <td><select name="typeOfVehicle">
-                            <option disabled selected>--Select-Type--</option>
-                            <option value="Cycle">Cycle</option>
-                            <option value="MotorCycle">MotorCycle</option>
-                            <option value="Four Wheelers">Four Wheelers</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td><label>Vehicle Number</label></td>
-                    <td><input name="vehicleNumber" type="text" placeholder="Vehicle Number" size="60%"
-                            pattern="^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$" required></td>
-                </tr>
-                <tr>
-                    <td><label>Employee Email</label></td>
-                    <td><input name="email" type="text" size="60%" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Identification</label></td>
-                    <td><textarea name="vehicleIdentification" placeholder="Identification" cols="60"
-                            required></textarea></td>
-                </tr>
-            </table>
+            <label for="vehicle_name">Vehicle Name</label>
+            <input name="vehicle_name" type="text" placeholder="Vehicle Name" id="vehicle_name" size="60%"
+                pattern="[A-Z a-z]*" required>
+
+            <label for="typeOfVehicle">Vehicle Type</label>
+            <select name="typeOfVehicle">
+                <option disabled selected>--Select-Type--</option>
+                <option value="Cycle">Cycle</option>
+                <option value="MotorCycle">MotorCycle</option>
+                <option value="Four Wheelers">Four Wheelers</option>
+            </select>
+            <label for="vehicleNumber">Vehicle Number</label>
+            <input name="vehicleNumber" type="text" placeholder="Vehicle Number" size="60%" id="vehicleNumber"
+                pattern="^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$" required>
+            <label for="email">Employee Email</label>
+            <input name="email" type="text" size="60%" id="email" placeholder="Employee Email" required>
+            <label for="vehicleIdentification">Identification</label>
+            <textarea name="vehicleIdentification" placeholder="Identification" cols="60" id="vehicleIdentification"
+                required></textarea>
             <input name="addVehicleButton" type="submit" value="Add">
-            <br><br>
         </form>
     </div>
     <br>
     <!-- Section for feedback form -->
     <button class="collapsible">Get In Touch</button>
-    <div class="content" id="feedback_form"  align="center">
+    <div class="content" id="feedback_form">
         <h2>
             Get In Touch
         </h2>
         <form action="" method="get">
-            <table cellpadding="10">
-                <tr>
-                    <td><label>Join Date</label></td>
-                    <td><input type="text" placeholder="Join Date" id="join_date" size="60%" required></td>
-                </tr>
-                <tr>
-                    <td><label>Email</label></td>
-                    <td><input type="text" placeholder="Email" id="email" size="60%" required></td>
-                </tr>
-                <tr>
-                    <td><label>Subject</label></td>
-                    <td><input type="text" placeholder="Subject" id="subject" size="60%" required></td>
-                </tr>
-                <tr>
-                    <td><label>Message</label></td>
-                    <td><textarea rows="4" cols="61" placeholder="Message" id="message" required></textarea> </td>
-                </tr>
-            </table>
-            <br>
+            <label for="join_date">Join Date</label>
+            <input type="text" placeholder="Join Date" id="join_date" size="60%" required>
+            <label for="email">Email</label>
+            <input type="text" placeholder="Email" id="email" size="60%" required>
+            <label for="subject">Subject</label></td>
+            <input type="text" placeholder="Subject" id="subject" size="60%" required>
+            <label for="message">Message</label>
+            <textarea rows="4" cols="61" placeholder="Message" id="message" required></textarea>
             <input type="submit" value="Send Email" id="feedback_submission_button" colspan="2">
-            <br><br>
         </form>
     </div>
     <br>
@@ -206,4 +168,5 @@
 
     <script src="function.js"></script>
 </body>
+
 </html>

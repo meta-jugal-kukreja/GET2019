@@ -1,14 +1,12 @@
 USE StoreFront;
-
+SELECT * FROM Products;
 /*
 * Query 1 : Display the list of products (Id, Title, Count of Categories) which fall in more than one Categories.
 */
-SELECT p.product_id, p.product_name, COUNT(c.category_id) AS count_of_categories
-FROM products p INNER JOIN category c ON
-p.category_id = c.category_id
-GROUP BY c.category_id
-HAVING count_of_categories > 1;
-
+SELECT product_name ,COUNT(Products.category_id) AS count FROM Products
+INNER JOIN Category ON Products.category_id = Category.category_id 
+GROUP BY Products.product_name 
+HAVING COUNT(Products.category_id) > 1 ;
 /*
 * Query 2 : Display Count of products as per below price range 0-1000,1001-5000,Above 5000
 */

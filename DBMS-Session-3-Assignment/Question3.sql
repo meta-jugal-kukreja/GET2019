@@ -1,33 +1,34 @@
 /*
 * Query 1 : Display Shopper’s information along with number of orders he/she placed during last 30 days.
 */
-SELECT u.user_name, u.email_id, u.phone_no, COUNT(o.email_id) as number_of_orders
-FROM user u, orders o
-WHERE u.email_id = o.email_id AND
-u.type_of_user = 'S' AND DATEDIFF(CURDATE(), o.order_date) <= 30; 
+SELECT u.user_name, u.email_id, u.phone_no, COUNT(o.user_id) as number_of_orders
+FROM Users u, Orders o
+WHERE u.user_id = o.user_id AND
+u.type_of_user = 'S' AND DATEDIFF(CURDATE(), o.order_date) <= 30
+GROUP BY u.user_id; 
 
 
 /*
 * Query 2 : Display the top 10 Shoppers who generated maximum number of revenue in last 30 days.
 */
 SELECT u.user_name, u.email_id, u.phone_no, SUM(o.order_amount) AS total_revenue
-FROM user u, orders o
-WHERE u.email_id = o.email_id AND 
+FROM Users u, Orders o
+WHERE u.user_id = o.user_id AND o.order_Status = 'Shipped' AND 
 u.type_of_user = 'S' AND DATEDIFF(CURDATE(), o.order_date) <= 30
-GROUP BY u.user_name
-ORDER BY total_revenue
-LIMIT 10; 
-
+GROUP BY o.user_id
+ORDER BY total_revenue Desc
+LIMIT 10;
 
 /*
 * Query 3 : Display top 20 Products which are ordered most in last 60 days along with numbers.
 */
-SELECT p.product_name, SUM(o.number_of_products) AS number_of_products
-FROM products p, orders o
-WHERE p.product_id = o.product_id AND
-DATEDIFF(CURDATE(), o.order_date) <= 60
-GROUP BY p.product_name
-ORDER BY number_of_products DESC
+SELECT (c.product_id), p.product_name, COUNT(c.order_id) AS NoOfProducts
+FROM Cart c , Products p, Orders o
+WHERE c.order_id = o.order_id AND
+p.product_id = c.product_id AND DATEDIFF(CURDATE(), o.order_date) <= 60
+AND c.order_status = 'Shipped'
+GROUP BY c.product_id
+ORDER BY NoOfProducts DESC
 LIMIT 20;
 
 
@@ -35,22 +36,22 @@ LIMIT 20;
 * Query 4 : Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
 */
 SELECT MONTH(order_date) AS Month, SUM(order_amount) as Monthly_Sale
-FROM orders
-WHERE TIMESTAMPDIFF(MONTH, order_date, CURDATE()) <= 6
+FROM Orders
+WHERE TIMESTAMPDIFF(MONTH, order_date, CURDATE()) <= 6 AND order_status = 'Shipped'
 GROUP BY Month;
 
 
 /*
 * Query 5 : Mark the products as Inactive which are not ordered in last 90 days.
 */
-UPDATE stock 
+UPDATE Stock 
 SET amount_of_product_in_stock = 0 
 WHERE product_id IN (SELECT o.product_id 
-                        FROM orders o
-                        WHERE o.product_id = stock.product_id AND
-                        DATEDIFF(CURDATE(), o.order_date) >= 90);
+                        FROM Orders o
+                        WHERE o.product_id = Stock.product_id AND
+                        DATEDIFF(CURDATE(), o.order_date) <= 90);
 
-SELECT * FROM stock;
+SELECT * FROM Stock;
 
 
 /*
@@ -65,9 +66,9 @@ c.category_name LIKE 'R%';
 /*
 * Query 7 : Display top 10 Items which were cancelled most.
 */
-SELECT p.product_name AS Product, COUNT(o.order_id) AS Cancelled_time
-FROM products p, orders o
-WHERE p.product_id = o.product_id AND
-o.order_status = 'Cancelled'
+SELECT p.product_name AS Product, COUNT(c.product_id) AS Cancelled_time
+FROM Products p, Cart c
+WHERE p.product_id = c.product_id AND
+c.order_status = 'Cancelled'
 GROUP BY p.product_id
-ORDER BY o.order_id DESC;
+ORDER BY c.order_id DESC;

@@ -1,0 +1,9 @@
+Installing MYSQL :
+	1. Double click on the set up file.
+	2. Install the setup with the default settings.
+
+Connection to MYSQL Server : 
+	1. When installation is complete go to start menu and run the "MYSQL Command Line"
+	2. When it is open first time, it will ask for password. Enter the password of your choice.
+	3. Next time when you will run it, it will ask the password.
+	4. Enter the password and your ready to configure the database(es).

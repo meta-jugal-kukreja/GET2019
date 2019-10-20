@@ -17,10 +17,10 @@ public class StoreFrontQueries {
 	 */
 	static String getQueryOne(String userID) {
 		return "SELECT o.order_id, o.order_date, SUM(o.order_amount) "
-				+ "FROM orders o, user u WHERE "
-				+ "o.email_id = u.email_id AND " + "u.email_id = '" + userID
+				+ "FROM Orders o, Users u WHERE "
+				+ "o.user_id = u.user_id AND " + "u.email_id = '" + userID
 				+ "' AND  " + "o.order_status = 'Shipped' "
-				+ "GROUP BY o.order_id" + " ORDER BY o.order_date" + ";";
+				+ "GROUP BY u.user_id" + " ORDER BY o.order_date" + ";";
 	}
 
 	/**

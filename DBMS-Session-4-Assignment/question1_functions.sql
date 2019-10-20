@@ -10,7 +10,7 @@ CREATE FUNCTION calculate_number_of_orders(month INT, year INT)
         BEGIN
             DECLARE number_of_orders int;
             SELECT COUNT(order_id) INTO number_of_orders
-            FROM orders 
+            FROM Orders 
             WHERE
                 MONTH(order_date) = month AND
                 YEAR(order_date) = year;
@@ -28,9 +28,11 @@ CREATE FUNCTION calculate_month_of_max_orders(year INT)
         BEGIN
             DECLARE month_of_max_orders int;
             SELECT MONTH(order_date) INTO month_of_max_orders
-            FROM orders 
-            WHERE YEAR(order_date) = year
+            FROM Orders 
+            WHERE YEAR(order_date) = year AND order_status = 'Shipped'
             ORDER BY MONTH(order_date) DESC
             LIMIT 1;
             RETURN (month_of_max_orders);
         END$$
+        
+Drop function calculate_month_of_max_orders;

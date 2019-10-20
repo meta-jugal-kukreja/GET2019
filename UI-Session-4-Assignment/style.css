@@ -23,6 +23,9 @@ body {
 #header {
 	background: #648CFF;
 	display: flex;
+	padding-left: 150px;
+	padding-right: 150px;
+	padding-top: 20px;
 }
 
 #header ul {
@@ -92,8 +95,8 @@ body {
 	font-size: 50px;
 }
 
-#cover-section div a {
-	background: #66f;
+#download_button {
+	background: #f66;
 	color: white;
 	text-align: center;
 	padding: 15px 40px;
@@ -102,9 +105,14 @@ body {
 	float:left;
 }
 
-#cover-section div a:hover {
-	background: #f66;
-	transition: 1s;
+#features_button {
+	background: #66f;
+	color: white;
+	text-align: center;
+	padding: 15px 40px;
+	margin:20px;
+	border-radius: 5px;
+	float:left;
 }
 
 #feature-section {
@@ -116,7 +124,7 @@ body {
 }
 
 #features-headline {
-	margin: 100px 250px;
+	margin: 100px;
 	display: flex;
 }
 
@@ -257,7 +265,7 @@ body {
 #download-app-section {
 	padding: 0px 200px;
 	display: flex;
-	background: #6388FB;
+	background: url(images/downloadbg.png);
 }
 
 #download-app-section div h1 {
@@ -282,23 +290,32 @@ body {
 	margin: 100px 0px 0px 5px;
 }
 
-#footer {
-	padding: 20px 250px;
-	background:#3B3C53;
-	display: flex;
+.store-images
+{
+	margin-top: 20px !important;
 }
 
-#footer ul {
+footer{
+	padding: 20px 250px;
+	background:#3B3C53;
+}
+
+#footer-div {
+	display: flex;
+	border-bottom: 1px solid #6a6e95;
+}
+
+#footer-div ul {
 	flex: 1;
 	text-align: center;
 	padding: 10px, 0;
 }
 
-#footer ul li {
+#footer-div ul li {
 	display: inline-block;
 }
 
-#footer ul li a {
+#footer-div ul li a {
 	margin-top: 5px;
 	color: #B0B1C3;
 	padding: 10px;
@@ -306,19 +323,19 @@ body {
 	border-bottom: solid 3px #3B3C53;
 }
 
-#footer ul li a:hover {
+#footer-div ul li a:hover {
 	background: #fff;
 	color: #3B3C53;
 	transition: 1s;
 }
 
-#footer .logo {
+#footer-div .logo {
 	height: 15px;
 	margin-top: 10px;
 	padding: 10px;
 }
 
-#footer div a {
+#footer-div div a {
 	margin-top: 5px;
 	color: #B0B1C3;
 	padding: 10px;
@@ -326,14 +343,14 @@ body {
 	border-bottom: solid 3px #3B3C53;
 }
 
-#footer div a i {
+#footer-div div a i {
 	background: #3B3C53;
 	color: #B0B1C3;
 	padding: 5px;
 	border: none;
 }
 
-#footer div a i:hover {
+#footer-div div a i:hover {
 	background: #fff;
 	color: #3B3C53;
 	transition: 1s;
@@ -341,7 +358,7 @@ body {
 
 #rights {
 	background: #3B3C53;
-	padding: 40px 0;
+	padding: 25px 0;
 	text-align: center;
 	color: #888;
 }

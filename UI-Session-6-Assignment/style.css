@@ -8,7 +8,12 @@
 }
 
 .main{
-	margin-left:16.67%;
+	margin-left:14.50%;
+}
+
+.scrollable
+{
+	overflow: scroll;
 }
 
 h3 {
@@ -35,16 +40,6 @@ h3 {
 .search-box input{
 	background: rgb(109, 123, 235);
 	border-radius: 1.5rem;
-}
-
-.search-box{
-	position: relative;
-}
-
-.search-box i{
-	position: absolute;
-	right: 15;
-	top: 8;
 }
 
 input:focus{
